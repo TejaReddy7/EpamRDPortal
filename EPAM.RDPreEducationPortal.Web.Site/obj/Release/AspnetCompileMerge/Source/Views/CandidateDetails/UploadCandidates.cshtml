@@ -1,0 +1,105 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.Candidate_Details
+
+@{
+    ViewBag.Title = "UploadCandidates";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Upload Candidates</h2>
+
+    @using (Html.BeginForm("UploadCandidates", "CandidateDetails", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div class="form-horizontal">
+        <hr />
+        @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <div class="alert alert-success" role="alert">
+                <strong>Well done!</strong> @Model.SuccessMessage.
+            </div>
+        }
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label>Recruitment</label>
+            @Html.DropDownListFor(model => model.RecruitmentId, new SelectList(Enumerable.Empty<SelectListItem>(), "RecruitmentId", "Name"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.RecruitmentId, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label>Test Hosted</label>
+            @Html.DropDownListFor(model => model.TestId, new SelectList(Enumerable.Empty<SelectListItem>(), "TestId", "TestName"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TestId, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <label class="form-check-label" for="invalidCheck2">
+                    Is First Round ?
+                </label>
+                @Html.CheckBox("isFirstRound", false, new { @style = "margin-left:10px" })
+            </div>
+        </div>
+        <div class="form-group"> 
+            <div class="form-check">
+                <label class="form-check-label" for="invalidCheck2">
+                    Coding Challenge Report
+                </label>
+                <input type="file" id="dataFile" name="upload" />
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Upload" class="btn btn-success" />
+        </div>
+    </div>
+    }
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON("/Recruitments/List",
+            function (classesData) {
+                var select = $("#RecruitmentId");
+                select.empty();
+                select.append($('<option/>', {
+                    value: 0,
+                    text: "Select a Recruitments"
+                }));
+                $.each(classesData, function (index, itemData) {
+                    select.append($('<option/>', {
+                        value: itemData.RecruitmentID,
+                        text: itemData.Name
+                    }));
+                });
+            });
+        //$.getJSON("/TestsHosted/List",
+        //    function (classesData) {
+        //        var select = $("#TestId");
+        //        select.empty();
+        //        select.append($('<option/>', {
+        //            value: 0,
+        //            text: "Select a Tests"
+        //        }));
+        //        $.each(classesData, function (index, itemData) {
+        //            select.append($('<option/>', {
+        //                value: itemData.TestId,
+        //                text: itemData.TestName
+        //            }));
+        //        });
+        //    });
+        $("#RecruitmentId").change(function () {
+            $.getJSON("/TestsHosted/List?RecruitmentId=" + $(this).val(),
+                function (classesData) {
+                    var select = $("#TestId");
+                    select.empty();
+                    select.append($('<option/>', {
+                        value: 0,
+                        text: "Select a Tests"
+                    }));
+                    $.each(classesData, function (index, itemData) {
+                        select.append($('<option/>', {
+                            value: itemData.TestId,
+                            text: itemData.TestName
+                        }));
+                    });
+                });
+        });
+    });
+</script>
+
+

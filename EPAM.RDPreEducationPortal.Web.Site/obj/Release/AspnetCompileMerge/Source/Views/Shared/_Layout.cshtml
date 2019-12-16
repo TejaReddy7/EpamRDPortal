@@ -1,0 +1,234 @@
+﻿@using EPAM.RDPreEducationPortal.Web.Site.Common
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://careers.epam.by/etc/designs/epam-core/images/common/logo.png">
+
+    <title>@ViewBag.Title</title>
+    <link rel='shortcut icon' type='image/x-icon' href='~/Content/Images/fav.png' />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @*<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">*@
+    @*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>*@
+    <link rel="stylesheet"
+          href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css" />
+    <script type="text/javascript"
+            src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript"
+            src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="upsaMinSize">
+
+            <div id="header-wrap">
+                <div id="topMenu">
+                    <div id="mainMenu" class="mainMenu">
+                        <a href="/Dashboard" id="upsaLogo">
+                            <span class="upsa-logo-text">RD PORTAL</span>
+                        </a>
+                        <ul id="top-list-menu">
+                            @if (UserDetailsSingleton.Instance.Role == "TechnicalInterviewer")
+                            {
+                                <li data-submenu-id="my-info" id="myInfoMenu" class="toplevel">
+                                    <a href="/CandidateDetails" class="link-menu haveMenu">Feedback</a>
+                                </li>
+                                <li data-submenu-id="my-info" id="myInfoMenu" class="toplevel">
+                                    <a href="/TechnicalAssessments" class="link-menu haveMenu">My Feedbacks</a>
+                                </li>
+                            }
+                            @if (UserDetailsSingleton.Instance.Role == "HR")
+                            {
+                                <li data-submenu-id="my-info" id="myInfoMenu" class="toplevel">
+                                    <a href="/CandidateDetails/HREligible" class="link-menu haveMenu">Feedback</a>
+                                </li>
+                                <li data-submenu-id="my-info" id="myInfoMenu" class="toplevel">
+                                    <a href="/HRAssessments" class="link-menu haveMenu">My Feedbacks</a>
+                                </li>
+                            }
+                            @if (UserDetailsSingleton.Instance.Role == "Student")
+                            {
+                                <li data-submenu-id="my-info" id="myInfoMenu" class="toplevel">
+                                    <a href="/GitRepositories" class="link-menu haveMenu">Git Repositories</a>
+                                </li>
+                                 
+                            }
+                            @if (UserDetailsSingleton.Instance.Role == "Admin")
+                            {
+                                <li data-submenu-id="reports-menu" id="reportsMenu" class="toplevel">
+                                    <a href="#" class="link-menu haveMenu">Reports</a><div id="reports-menu" class="insideListWrap" style="display: none;">
+                                        <div class="insideList">
+                                            <ul>
+                                                <li>
+                                                    <a href="/AttendanceReport">Attendance Report</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/Report/Recruitment">Recruitment Report</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/Report/RecruitmentMaster">Recruitment Master Report</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li data-submenu-id="admin-menu" id="adminMenu" class="toplevel">
+                                    <a href="#" class="link-menu haveMenu" target="_blank">Admin</a>
+                                    <div id="help-menu" class="insideListWrap" style="display: none;">
+                                        <div class="insideList">
+                                            <ul>
+                                                <li>
+                                                    <a href="/Roles">
+                                                        Roles
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/Recruitments">
+                                                        Recruitments
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/TestsHosted">
+                                                        Tests Hosted
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a id="upsaHelpLink" href="/Tasks" target="_blank">
+                                                        Tasks
+                                                    </a>
+                                                </li>
+                                                <li data-submenu-id="summary-menu" id="summaryMenu" class="toplevel">
+                                                    <a href="/AttendeeDetails/Create" class="">Attendance-Upload</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/Locations">
+                                                        Locations
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/Users">
+                                                        Users
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/CandidateDetails/UploadCandidates">
+                                                       Upload Coding Challenge Excel
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                            <li data-submenu-id="help-menu" id="helpMenu" class="toplevel">
+                                <a href="#" class="link-menu haveMenu" target="_blank">Help</a><div id="help-menu" class="insideListWrap" style="display: none;">
+                                    <div class="insideList">
+                                        <ul>
+                                            <li>
+                                                <a id="upsaHelpLink" href="https://kb.epam.com/display/UPSA/Your+personal+profile" target="_blank">
+                                                    On-Line Help
+                                                </a>
+                                            </li>
+                                            <li id="onboardDialogLink" style="display: none;">
+                                                <a href="#">
+                                                    Page Guide
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://kb.epam.com/x/gwWzAQ" target="_blank">
+                                                    What's new
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div id="headerOptions">
+                            <div id="searchByName">
+                                Welcome to @Html.Raw(UserDetailsSingleton.Instance.Name)
+                                @*Welcome to Raja Sekhar Tadepalli @{UserDetailsSingleton.Instance.GetUserDetails().FirstName}*@
+                                @*<span class="twitter-typeahead" style="display: inline-block;"><input class="tt-hint" type="text" autocomplete="off" spellcheck="off" disabled="" style="top: -22px; left: 0px; border-color: transparent; box-shadow: none; display: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(91, 90, 91);"><input type="text" id="hiddenQuery" class="txtfield tt-query" autocomplete="off" spellcheck="false" dir="auto" style="vertical-align: top;"><span style="position: absolute; left: -9999px; visibility: hidden; white-space: nowrap; font-family: &quot;Source Sans Pro&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></span><span class="tt-dropdown-menu" style="position: absolute; top: 47px; right: 0px; z-index: 100; display: none;"></span></span>
+                                    <i class="icon-search"></i>*@
+                            </div>
+
+                            <div id="menuProfileLink" class="menu-widget">
+                                <div class="photo-wrap" style="background-image: url('/Content/Images/menicon.jpg')"></div>
+                                <div id="divLogout" class="id-card" style="display: none;"><a href="/Account/Logout">Logout</a></div>
+                            </div>
+
+                            @*<div id="global_menu_toggle" class="menu-widget"><div style="position: absolute; left: 35px; top: 19px; background: rgb(255, 45, 60); box-shadow: rgba(255, 45, 60, 0.8) 0px 0px 6px 1px; border-radius: 50%; width: 6px; height: 6px;"></div></div>*@
+                        </div>
+                    </div>
+                    @*<div class="title-panel-background"></div>*@
+
+                    <script type="text/javascript">
+                        var actualHelpLink = 'https://kb.epam.com/display/UPSA/Your+personal+profile';
+                    </script>
+                </div>
+            </div>
+        </div>
+        @*<div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+            </div>*@
+
+    </div>
+    <div class="body-content" style="margin-top: 50px !important;margin: 50px !important">
+        @RenderBody()
+        @*<footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+
+    </div>
+    <div class="site-footer">
+        <div>
+            <div style="left: 50px;">
+                <span class="epam-logo">
+                    <a href="https://kb.epam.com/x/gwWzAQ" target="_blank">
+                        RD-Pre Education version: 7.1.026, Node2
+                    </a>
+                </span>
+            </div>
+            <div style="right: 50px;">
+                <span class="help-link">
+                    <a href="https://kb.epam.com/display/UPSA/Your+personal+profile" target="_blank">Help</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/scripts")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+    <script type="text/javascript">
+        $("#menuProfileLink").click(function () {
+            $("#divLogout").toggle("slow");
+        });
+        $(".toplevel").hover(function () {
+            $(this).children("div").slideDown("slow");
+        }, function () {
+            $(this).children("div").hide();
+        });
+    </script>
+</body>
+</html>

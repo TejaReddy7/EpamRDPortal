@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D5EB751F-FF24-44BE-9C28-A1AD16174C78}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EPAM.RDPreEducationPortal.Web.Site</RootNamespace>
+    <AssemblyName>EPAM.RDPreEducationPortal.Web.Site</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Words, Version=19.8.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Words.19.8.0\lib\net40\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.5.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.5.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="GridMvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Configuration, Version=5.0.3.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.2.0.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception, Version=5.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception.Configuration, Version=5.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RegistrationByConvention, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ServiceLocation, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.2.0\lib\net45\Unity.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.5.1\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.5.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.5.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.5.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.5.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\Enums.cs" />
+    <Compile Include="Common\UserDetailsSingleton.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AttendanceReportController.cs" />
+    <Compile Include="Controllers\CandidateDetailsController.cs" />
+    <Compile Include="Controllers\CandidateMarksController.cs" />
+    <Compile Include="Controllers\Candidate_DetailsController.cs" />
+    <Compile Include="Controllers\CertificatesController.cs" />
+    <Compile Include="Controllers\CollegesController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\EmailRecipientsController.cs" />
+    <Compile Include="Controllers\GenderController.cs" />
+    <Compile Include="Controllers\GitRepositoriesController.cs" />
+    <Compile Include="Controllers\GroupDiscussionController.cs" />
+    <Compile Include="Controllers\HRAssessmentsController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\RecruitmentRoundsController.cs" />
+    <Compile Include="Controllers\RecruitmentsController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
+    <Compile Include="Controllers\TechnicalAssessmentsController.cs" />
+    <Compile Include="Controllers\TestsHostedController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\WebinarRegistrationController.cs" />
+    <Compile Include="Controllers\AttendeeDetailsController.cs" />
+    <Compile Include="Controllers\GitRepositoriesController_old.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="EntityFramework\AttendeeDetail.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Candidate_Details.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Candidate_Marks.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\College.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Email.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\EmailRecipient.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Get_Candidate_Details_HREligible_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Get_Candidate_Details_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Get_Colleges_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\GET_Student_GitRepositories_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Get_UserDetails_SonarReport_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Get_UsersOnUserNameAndPassword_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Get_WebinarAbsenteesCollegewise_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Get_WebinarAbsentees_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\HRAssessment.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Master_Gender.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Master_Locations.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Master_Roles.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\PEPEntityDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PEPEntityDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\PEPEntityDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\PEPEntityDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PEPEntityDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Recruitment.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Recruitment_Rounds.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Report_RecruitmentSummary_Genderwise_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Report_RecruitmentSummary_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Report_WebinarAttendance_Studentwise_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Session.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Sonar_Issues.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Split_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\sp_helpdiagrams_Result.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Student.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Student_GitRepositories.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Task.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\TechnicalAssessment.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\TestsHosted.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\User.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\User_Role.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Webinar.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Webinar_Registrants.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Webinar_Registration.cs">
+      <DependentUpon>PEPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\CustomExceptionHandler.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\AttendanceReportModel.cs" />
+    <Compile Include="Models\CandidateDetails.cs" />
+    <Compile Include="Models\CollegeModel.cs" />
+    <Compile Include="Models\DashboardModel.cs" />
+    <Compile Include="Models\EmailRecipientsModel.cs" />
+    <Compile Include="Models\RecruitmentChartsReportModel.cs" />
+    <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\TasksModel.cs" />
+    <Compile Include="Models\WebinarRegistrationModel.cs" />
+    <Compile Include="Models\AttendeeDetailsModel.cs" />
+    <Compile Include="Models\BaseClass.cs" />
+    <Compile Include="Models\GitRepositoriesModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom-css\bootstrap-switch.css" />
+    <Content Include="Content\custom-css\datatables.css" />
+    <Content Include="Content\custom-css\loader.css" />
+    <Content Include="Content\custom-css\message-boxes.css" />
+    <Content Include="Content\custom-css\rdpreeducation.layout.style.css" />
+    <Content Include="Content\custom-css\tablesorter\theme.blue.css" />
+    <Content Include="Content\custom-css\tabs.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\font\fontawesome-webfont.svg" />
+    <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\Images\EpamTrainingCenterLogo.png" />
+    <Content Include="Content\Images\excel-logo-1.jpeg" />
+    <Content Include="Content\Images\fav.ico" />
+    <Content Include="Content\Images\fav.png" />
+    <Content Include="Content\Images\Icons\icons8-business-report-48.png" />
+    <Content Include="Content\Images\Icons\icons8-meeting-room-50.png" />
+    <Content Include="Content\Images\Icons\icons8-report-file-64.png" />
+    <Content Include="Content\Images\Icons\icons8-resume-100.png" />
+    <Content Include="Content\Images\Icons\icons8-technical-support-100.png" />
+    <Content Include="Content\Images\menicon.jpg" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\Preloader_3.gif" />
+    <Content Include="Content\Images\startbanner-desktop.jpg" />
+    <Content Include="Content\loader.css" />
+    <Content Include="Content\login - Copy.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="EmailTemplates\TaskSubmissionTemplate.html" />
+    <Content Include="EmailTemplates\NewUser.html" />
+    <Content Include="EmailTemplates\WebinarNotAttended_CollegeReport.html" />
+    <Content Include="EmailTemplates\WebinarNotAttended.html" />
+    <Content Include="EntityFramework\PEPEntityDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PEPEntityDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>PEPEntityDataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="EntityFramework\PEPEntityDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PEPEntityDataModel.edmx</DependentUpon>
+      <LastGenOutput>PEPEntityDataModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Pagination.html" />
+    <Content Include="Scripts\bootstrap-switch-main.js" />
+    <Content Include="Scripts\bootstrap-switch.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Grid.mvc.readme" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font\fontawesome-webfont.woff2" />
+    <Content Include="Content\font\FontAwesome.otf" />
+    <EntityDeploy Include="EntityFramework\PEPEntityDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PEPEntityDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EntityFramework\PEPEntityDataModel.edmx.diagram">
+      <DependentUpon>PEPEntityDataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.3.2.0.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\datatables.js" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
+    <Content Include="Scripts\highlight.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.userTimeout.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\loader.js" />
+    <Content Include="Scripts\loadtestDrp.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\notify.min.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\site.js" />
+    <Content Include="Scripts\tablesorter\jquery.tablesorter.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\AttendeeDetails\Create.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\Account\Login_Old.cshtml" />
+    <Content Include="Views\AttendanceReport\Index.cshtml" />
+    <Content Include="Views\Account\UploadStudents.cshtml" />
+    <Content Include="Views\Admin\EmailRecipients.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\EmailRecipients\Create.cshtml" />
+    <Content Include="Views\EmailRecipients\Delete.cshtml" />
+    <Content Include="Views\EmailRecipients\Details.cshtml" />
+    <Content Include="Views\EmailRecipients\Edit.cshtml" />
+    <Content Include="Views\EmailRecipients\Index.cshtml" />
+    <Content Include="Views\Colleges\Create.cshtml" />
+    <Content Include="Views\Colleges\Delete.cshtml" />
+    <Content Include="Views\Colleges\Details.cshtml" />
+    <Content Include="Views\Colleges\Edit.cshtml" />
+    <Content Include="Views\Colleges\Index.cshtml" />
+    <Content Include="Views\Tasks\Create.cshtml" />
+    <Content Include="Views\Tasks\Delete.cshtml" />
+    <Content Include="Views\Tasks\Details.cshtml" />
+    <Content Include="Views\Tasks\Edit.cshtml" />
+    <Content Include="Views\Tasks\Index.cshtml" />
+    <Content Include="Views\GitRepositories\Create.cshtml" />
+    <Content Include="Views\GitRepositories\Delete.cshtml" />
+    <Content Include="Views\GitRepositories\Details.cshtml" />
+    <Content Include="Views\GitRepositories\Edit.cshtml" />
+    <Content Include="Views\GitRepositories\Index.cshtml" />
+    <Content Include="Views\GitRepositories\BulkUpload.cshtml" />
+    <Content Include="Views\CandidateDetails\UploadCandidates.cshtml" />
+    <Content Include="Views\CandidateDetails\Create.cshtml" />
+    <Content Include="Views\CandidateDetails\Delete.cshtml" />
+    <Content Include="Views\CandidateDetails\Details.cshtml" />
+    <Content Include="Views\CandidateDetails\Edit.cshtml" />
+    <Content Include="Views\CandidateDetails\Index.cshtml" />
+    <Content Include="Views\TechnicalAssessments\Create.cshtml" />
+    <Content Include="Views\TechnicalAssessments\Delete.cshtml" />
+    <Content Include="Views\TechnicalAssessments\Details.cshtml" />
+    <Content Include="Views\TechnicalAssessments\Edit.cshtml" />
+    <Content Include="Views\TechnicalAssessments\Index.cshtml" />
+    <Content Include="Views\HRAssessments\Create.cshtml" />
+    <Content Include="Views\HRAssessments\Delete.cshtml" />
+    <Content Include="Views\HRAssessments\Details.cshtml" />
+    <Content Include="Views\HRAssessments\Edit.cshtml" />
+    <Content Include="Views\HRAssessments\Index.cshtml" />
+    <Content Include="Views\Report\Recruitment.cshtml" />
+    <Content Include="Views\Recruitments\Create.cshtml" />
+    <Content Include="Views\Recruitments\Delete.cshtml" />
+    <Content Include="Views\Recruitments\Details.cshtml" />
+    <Content Include="Views\Recruitments\Edit.cshtml" />
+    <Content Include="Views\Recruitments\Index.cshtml" />
+    <Content Include="Views\RecruitmentRounds\Create.cshtml" />
+    <Content Include="Views\RecruitmentRounds\Delete.cshtml" />
+    <Content Include="Views\RecruitmentRounds\Details.cshtml" />
+    <Content Include="Views\RecruitmentRounds\Edit.cshtml" />
+    <Content Include="Views\RecruitmentRounds\Index.cshtml" />
+    <Content Include="Views\TestsHosted\Create.cshtml" />
+    <Content Include="Views\TestsHosted\Delete.cshtml" />
+    <Content Include="Views\TestsHosted\Details.cshtml" />
+    <Content Include="Views\TestsHosted\Edit.cshtml" />
+    <Content Include="Views\TestsHosted\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\Locations\Delete.cshtml" />
+    <Content Include="Views\Locations\Details.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Gender\Create.cshtml" />
+    <Content Include="Views\Gender\Delete.cshtml" />
+    <Content Include="Views\Gender\Details.cshtml" />
+    <Content Include="Views\Gender\Edit.cshtml" />
+    <Content Include="Views\Gender\Index.cshtml" />
+    <Content Include="Views\CandidateDetails\List.cshtml" />
+    <Content Include="Views\CandidateDetails\HREligible.cshtml" />
+    <Content Include="Views\Report\RecruitmentMaster.cshtml" />
+    <Content Include="Views\TechnicalAssessments\_details.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\_recruitmentSummary.cshtml" />
+    <Content Include="Views\Dashboard\_genderwiseSummary.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Candidate_Details\Create.cshtml" />
+    <Content Include="Views\Candidate_Details\Delete.cshtml" />
+    <Content Include="Views\Candidate_Details\Details.cshtml" />
+    <Content Include="Views\Candidate_Details\Edit.cshtml" />
+    <Content Include="Views\Candidate_Details\Index.cshtml" />
+    <Content Include="Views\GroupDiscussion\Create.cshtml" />
+    <Content Include="Views\GroupDiscussion\Delete.cshtml" />
+    <Content Include="Views\GroupDiscussion\Details.cshtml" />
+    <Content Include="Views\GroupDiscussion\Edit.cshtml" />
+    <Content Include="Views\GroupDiscussion\Index.cshtml" />
+    <Content Include="Views\Report\_recruitmentWeightagesList.cshtml" />
+    <Content Include="Views\Dashboard\_interviewPanelwiseSummary.cshtml" />
+    <Content Include="Views\Dashboard\_recruitmentSummaryCollegeWise.cshtml" />
+    <Content Include="Views\Colleges\UpdateCandidateColleges.cshtml" />
+    <Content Include="Views\Report\_recruitmentReport.cshtml" />
+    <Content Include="Views\CandidateMarks\Create.cshtml" />
+    <Content Include="Views\CandidateMarks\Delete.cshtml" />
+    <Content Include="Views\CandidateMarks\Details.cshtml" />
+    <Content Include="Views\CandidateMarks\Edit.cshtml" />
+    <Content Include="Views\CandidateMarks\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Certificates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Epam.RDPreEducationPortal.CoreModels\EPAM.RDPreEducationPortal.CoreModels.csproj">
+      <Project>{84e57431-71b8-4ab3-aa0c-ec497d4b8d62}</Project>
+      <Name>EPAM.RDPreEducationPortal.CoreModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EPAM.RDPreEducationPortal.Utilities\EPAM.RDPreEducationPortal.Utilities.csproj">
+      <Project>{26578104-be71-459f-a552-3088c30fdd73}</Project>
+      <Name>EPAM.RDPreEducationPortal.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61392</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61392/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:61392/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,100 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.Student_GitRepositories
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    EPAM.RDPreEducationPortal.Web.Site.EntityFramework.EpamRDPreEducationEntities db = new EPAM.RDPreEducationPortal.Web.Site.EntityFramework.EpamRDPreEducationEntities();
+}
+
+<h2>Git Repositories</h2>
+
+@*@if(!string.IsNullOrEmpty(Model.SuccessMessage))
+{
+    <div class="alert alert-success" role="alert">
+        <strong>Well done!</strong> Record successfully saved.
+    </div>
+}*@
+<p class="float-right">
+    <a href="/GitRepositories/Create?class=btn%20btn-success" class="btn btn-success">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RepositoryUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.LastEditedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastEditedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskId)
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tbody class="tc-table-header compact-table workload-table">
+        @foreach (var item in db.Student_GitRepositories.ToList())
+        {
+            <tr>
+                <td>
+                    @Html.HiddenFor(modelItem => item.StudentID)
+                    @Html.DisplayFor(modelItem => item.RepositoryUrl)
+                </td>
+                <td>
+                    @if (item.Status == true)
+                    {
+                        <label>Active</label>
+                    }
+                    else
+                    {
+                        <label>In Active</label>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectName)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.CreatedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastEditedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastEditedDate)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.TaskName)*@
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.GitRepositoryID })
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.GitRepositoryID })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.GitRepositoryID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+    setTimeout(function() {
+        $(".alert-success").hide();
+    }, 2000);
+
+</script>

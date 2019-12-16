@@ -1,0 +1,80 @@
+﻿@using EPAM.RDPreEducationPortal.Web.Site.EntityFramework
+@model IEnumerable<EPAM.RDPreEducationPortal.Web.Site.EntityFramework.TestsHosted>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var db = new EpamRDPreEducationEntities();
+
+}
+<div class="container">
+    <h2>Hosted Tests</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TestName)
+            </th>
+            <th>
+                Recruitment
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Cutoff Percentage
+            </th>
+            <th>
+                Coding Weightage
+            </th>
+            <th>
+                Technical Weightage
+            </th>
+            <th>
+                HR Weightage
+            </th>
+            <th>Edit</th>
+            <th>Details</th>
+            <th>Delete</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TestName)
+                </td>
+                <td>
+                    @db.Recruitments.Find(item.RecruitmentId).Name
+                </td>
+                <td>
+                    @db.Master_Locations.Find(item.LocationId).Location
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CutoffPercentage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodingWeightageOnSelection1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TechnicalWeightageOnSelection)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HRWeightageOnSelection)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TestId })
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.TestId })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TestId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

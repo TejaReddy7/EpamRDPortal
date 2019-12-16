@@ -1,0 +1,156 @@
+﻿@using EPAM.RDPreEducationPortal.Web.Site.Common
+@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.Candidate_Details
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/loadtestDrp.js"></script>
+<div class="container">
+    <h2>Candidate Details</h2>
+    <div class="form-horizontal">
+        <hr />
+        @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <div class="alert alert-success" role="alert">
+                <strong>Well done!</strong> @Model.SuccessMessage.
+            </div>
+        }
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-2">
+                <label for="RecruitmentId">Recruitment</label>
+            </div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.RecruitmentId, new SelectList(Enumerable.Empty<SelectListItem>(), "RecruitmentId", "Name"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RecruitmentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">
+                <label for="TestId">Test Hosted</label>
+            </div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TestId, new SelectList(Enumerable.Empty<SelectListItem>(), "TestId", "TestName"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TestId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div id="divCandidateDetails"></div>
+    @*<table id="myTable" class="datatable table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CandidateName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MarksScored)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmailAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MobileNumber)
+                    </th>
+                     <th>
+                        @Html.DisplayNameFor(model => model.GraduationSpecialty)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CandidateName)
+                        </td>
+                         <td>
+                            @Html.DisplayFor(modelItem => item.MarksScored)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmailAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MobileNumber)
+                        </td>
+                         <td>
+                            @Html.DisplayFor(modelItem => item.GraduationSpecialty)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+                        <td>
+                            @if (UserDetailsSingleton.Instance.Role == "TechnicalInterviewer")
+                            {
+                                @Html.ActionLink(
+                                    linkText: "Technical",
+                                    actionName: "Create",
+                                    controllerName: "TechnicalAssessments",
+                                    routeValues: new
+                                    {
+                                        id = item.CandidateID
+                                    },
+                                    htmlAttributes: null
+                                    )
+                            }
+                            else if (UserDetailsSingleton.Instance.Role == "HR")
+                            {
+                                @Html.ActionLink("HR", "Create", "HRAssessments", new { id = item.CandidateID }, htmlAttributes: null)
+                            }
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>*@
+</div>
+<script>
+    $(document).ready(function () {
+        //$('#myTable').dataTable();
+        $(document).ready(function () {
+            $.getJSON("/Recruitments/List",
+                function (classesData) {
+                    var select = $("#RecruitmentId");
+                    select.empty();
+                    select.append($('<option/>', {
+                        value: 0,
+                        text: "Select a Recruitments"
+                    }));
+                    $.each(classesData, function (index, itemData) {
+                        select.append($('<option/>', {
+                            value: itemData.RecruitmentID,
+                            text: itemData.Name
+                        }));
+                    });
+                });
+        });
+        $("#RecruitmentId").change(function () {
+            $.getJSON("/TestsHosted/List?RecruitmentId=" + $(this).val(),
+                function (classesData) {
+                    var select = $("#TestId");
+                    select.empty();
+                    select.append($('<option/>', {
+                        value: 0,
+                        text: "Select a Tests"
+                    }));
+                    $.each(classesData, function (index, itemData) {
+                        select.append($('<option/>', {
+                            value: itemData.TestId,
+                            text: itemData.TestName
+                        }));
+                    });
+                });
+        });
+        $("#TestId").change(function () {
+            $.ajax({
+                url: "/CandidateDetails/List?TestId=" + $(this).val(),
+                type: "GET",
+                success: function (data) {
+                    $("#divCandidateDetails").html(data);
+                }
+            });
+        });
+    });
+</script>

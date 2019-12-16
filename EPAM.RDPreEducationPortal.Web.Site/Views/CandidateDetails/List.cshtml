@@ -1,0 +1,160 @@
+﻿@using EPAM.RDPreEducationPortal.Web.Site.Common
+@model IEnumerable<EPAM.RDPreEducationPortal.Web.Site.EntityFramework.Candidate_Details>
+@using EPAM.RDPreEducationPortal.Web.Site.Models
+<link href="~/Content/custom-css/bootstrap-switch.css" rel="stylesheet" />
+<script src="~/Scripts/highlight.js"></script>
+<!--<script src="js/bootstrap-switch/bootstrap-switch.js"></script>-->
+<script src="~/Scripts/bootstrap-switch.js"></script>
+<script src="~/Scripts/bootstrap-switch-main.js"></script>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<h2>Candidate Details</h2>
+@{ AccountModel accountModel = new AccountModel();
+    var role = "";
+    if (Session["UserDetails"] != null)
+    {
+        accountModel = (AccountModel)(Session["UserDetails"]);
+        role = accountModel.Role;
+    }
+
+}
+@using (Html.BeginForm("List", "GroupDiscussion"))
+{
+    <table style="width: 100%" id="myTable" class="datatable table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CandidateName)
+                </th>
+                <th>
+                    First Round Score
+                </th>
+                <th>
+                    Second Round Score
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MobileNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </th>
+                <th>Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CandidateName)
+                    </td>
+                    <td>
+                        @Html.Raw(item.FirstRoundCodingMarks)
+                    </td>
+                    <td>
+                        @Html.Raw(item.SecondRoundMarks)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MobileNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @if (item.Status == "Qualified")
+                        {
+                            if (role == "TechnicalInterviewer")
+                            {
+                                @Html.ActionLink(
+                                    linkText: "Technical",
+                                    actionName: "Create",
+                                    controllerName: "TechnicalAssessments",
+                                    routeValues: new
+                                    {
+                                        candidateID = item.CandidateID,
+                                        testId = item.TestId
+                                    },
+                                    htmlAttributes: null
+                                    )
+                            }
+                            else if (role == "HR")
+                            {
+                                @Html.ActionLink("HR", "Create", "HRAssessments", new { id = item.CandidateID }, htmlAttributes: null)
+                            }
+                            else if (role == "GDManager")
+                            {
+                                if (Convert.ToBoolean(item.GDStatus) == true)
+                                {
+                                    <input id="@item.CandidateID" class="rbGDReject" checked="checked" type="checkbox" data-on-color="success" data-off-color="danger" data-on-text="Accepted" data-off-text="Rejected">
+                                }
+                                else
+                                {
+                                    <input id="@item.CandidateID" class="rbGDReject" type="checkbox" data-on-color="success" data-off-color="danger" data-on-text="Accepted" data-off-text="Rejected">
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <span style="color: red">Not Qualified</span>
+                        }
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    @*if (Session["Role"].ToString() == "GDManager")
+    {
+        <button type="button" id="btnSubmitGD" class="btn btn-success">Submit</button>
+    }*@
+}
+<style type="text/css">
+    .customMessage {
+        margin-top: 50px;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        @*if ('@Session["Role"].ToString()'  != "GDManager") {*@
+            $('#myTable').dataTable();
+        //}
+    //$(".rbGDReject").click(function () {
+    //$('.bootstrap-switch-container').click(function () {
+        $('.rbGDReject').on('switchChange.bootstrapSwitch', function (event, state) {
+           var candidateName= $(this).closest("tr").eq(0).find("td").eq(0).html();
+            var id = $(this).attr("id");
+            var status = "Rejected";
+            if ($(this).prop("checked")) {
+                status = "Accepted";
+            }
+            $.ajax({
+                type: 'GET',
+                url: '/GroupDiscussion/Update?id=' + id + "&status=" + status,
+                success: function (data) {
+                    var cName = $.trim(candidateName) + " GD " + status + " successfully."
+                    //alert(data);
+                    //$(".rbGDReject").notify(
+                    //    "GD Saved successfully.",
+                    //    { position: "right", className: "success" }
+                    //);
+                    if (status == "Accepted") {
+                        $.notify(cName, { showDuration: 400, hideDuration: 200000, position: "right bottom", className: "success" });
+                    } else {
+                        $.notify(cName, { showDuration: 400, hideDuration: 200000, position: "right bottom", className: "error" });
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        });
+    });
+</script>

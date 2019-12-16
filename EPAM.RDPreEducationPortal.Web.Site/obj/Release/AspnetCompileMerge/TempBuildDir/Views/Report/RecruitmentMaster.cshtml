@@ -1,0 +1,113 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.Candidate_Details
+
+@{
+    ViewBag.Title = "Recruitment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+<div class="container">
+    <h2>Recruitment Report</h2>
+
+    @using (Html.BeginForm("UploadCandidates", "CandidateDetails", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-horizontal">
+            <div class="row">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RecruitmentId)
+                    @Html.DropDownListFor(model => model.RecruitmentId, new SelectList(Enumerable.Empty<SelectListItem>(), "RecruitmentId", "Name"), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.RecruitmentId, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="RoundTypeId">Round Type</label>
+                    <select class="form-control" data-val="true" data-val-number="The field RecruitmentId must be a number." id="RoundTypeId" name="RoundTypeId" data-fillr-id="219612236" data-fillr="bound" autocomplete="off">
+                        <option value="0">Select Round Type</option>
+                        <option value="OnlineCodingChallenge">Online Coding Challenge</option>
+                        <option value="SecondRound">2nd Round Coding Challenge</option>
+                        <option value="TechnicalFeedback">Technical 1x1 Feedback</option>
+                        <option value="HRFeedback">HR Feedback</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <table class="table-bordered table table-striped">
+                        <tr>
+                            <td></td>
+                            <td>
+                                Coding Challenge - II
+                            </td>
+                            <td>
+                                1x1
+                            </td>
+                            <td>
+                                HR
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Kolkata
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Chandigarh
+                            </td>
+
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Hyderabad
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="form-group">
+                    <input type="button" id="btnExportReport" value="Export Report" class="btn btn-success" />
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON("/Recruitments/List",
+            function (classesData) {
+                var select = $("#RecruitmentId");
+                select.empty();
+                select.append($('<option/>', {
+                    value: 0,
+                    text: "Select a Recruitments"
+                }));
+                $.each(classesData, function (index, itemData) {
+                    select.append($('<option/>', {
+                        value: itemData.RecruitmentID,
+                        text: itemData.Name
+                    }));
+                });
+            });
+    });
+    $("#btnExportReport").click(function () {
+        //window.location = '/Report/RecruitmentExcelExport';
+        $.ajax({
+            type: "POST",
+            url: "/Report/RecruitmentExcelExport?recruitmentId=" + $("#RecruitmentId").val() + "&roundType=" + $("#RoundTypeId").val(),
+            cache: false,
+            success: function (data) {
+                window.location = '/Report/Download';
+            },
+            error: function (data) {
+
+            }
+        });
+    });
+</script>

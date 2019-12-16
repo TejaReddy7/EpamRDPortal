@@ -1,0 +1,256 @@
+﻿@model IEnumerable<EPAM.RDPreEducationPortal.Web.Site.EntityFramework.Candidate_Details>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateLocationID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateResume)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartingTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreviousAssessments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarksScored)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Result)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Report)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublicReport)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GraduationCollegeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Graduation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GraduationSpecialty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearOfPassedOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GraduationMarksCGPA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C12MarksCGPA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C10MarksCGPA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PermanentAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PermanentStateOfResidence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GovernmentIssuedIDProof)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreferredJobLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecruitmentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondRoundPublicReport)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPEPStudent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsCodathonWinner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsGDCleared)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GDComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreferredLocationForSecondRound)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidateName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidateLocationID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidateEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidateResume)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartingTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviousAssessments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MarksScored)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Result)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Report)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublicReport)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GraduationCollegeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Graduation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GraduationSpecialty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearOfPassedOut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GraduationMarksCGPA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C12MarksCGPA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C10MarksCGPA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PermanentAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PermanentStateOfResidence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GovernmentIssuedIDProof)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreferredJobLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecruitmentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondRoundPublicReport)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPEPStudent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsCodathonWinner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsGDCleared)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GDComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreferredLocationForSecondRound)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CandidateID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CandidateID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CandidateID })
+        </td>
+    </tr>
+}
+
+</table>

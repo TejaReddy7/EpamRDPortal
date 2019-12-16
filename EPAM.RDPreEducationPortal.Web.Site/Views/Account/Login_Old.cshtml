@@ -1,0 +1,95 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.Models.AccountModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+@Styles.Render("~/Content/logincss/")
+@Styles.Render("~/Content/css/")
+@Scripts.Render("~/bundles/jquery")
+<link rel='shortcut icon' type='image/x-icon' href='~/Content/Images/fav.ico' />
+<div id="fullPage">
+    <div id="brandingWrapper" class="float">
+        <div id="branding">
+            <div class="illustrationClass">EPAM RD LOGIN</div>
+            <div class="illustrationClass-description">
+                Please login to application to manage attendance report and students feedback
+            </div>
+        </div>
+    </div>
+    <div id="contentWrapper" class="float">
+        <div id="content">
+            <div id="header">
+                <img class="logoImage" id="companyLogo" src="~/Content/Images/logo.png" alt="EPAM Systems"><div id="attention"><div id="message">Attention! Please open your browser in Private or Incognito mode when you login to EPAM from a non-corporate device you own, and avoid using public and non-trusted devices and networks when entering your account credentials.</div><div id="icon"></div></div>
+            </div>
+            <div id="workArea">
+
+                @using (Html.BeginForm("Login", "Account"))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @placeholder = "Enter Username", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @placeholder = "Enter Password", @class = "form-control", Type = "password" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class=" col-md-10">
+                                <input type="submit" value="Submit" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div id="footerPlaceholder"></div>
+        </div>
+        <div id="footer">
+            <div id="footerLinks" class="floatReverse">
+                <div><span id="copyright">© EPAM Systems, Inc.</span><a id="home" class="pageLink" href="http://www.epam.com/privacy-policy">Privacy Policy</a><a id="privacy" class="pageLink" href="mailto:Support@epam.com">Support</a><a id="helpDesk" class="pageLink" href="https://password.epam.com/">Self Service</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    body {
+        padding: 0px;
+    }
+    .illustrationClass {
+        color: #fff;
+        font-size: -webkit-xxx-large;
+        font-weight: 500;
+        margin: 200px 200px 0 100px !important;
+    }
+
+    .illustrationClass-description {
+        color: #fff;
+        font-size: 12pt;
+        margin: 0 200px 100px 100px !important;
+    }
+</style>
+<script type="text/javascript">
+
+    $('form').each(function () {
+        $(this).submit(function (e) {
+            if (!document.querySelector("#Password").value || !document.querySelector("#UserName").value) {
+                alert("username or password not entered!");
+                e.preventDefault();
+                return;
+            }
+            $(this).unbind('submit').submit();
+        });
+    })
+</script>

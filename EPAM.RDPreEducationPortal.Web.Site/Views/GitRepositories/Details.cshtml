@@ -1,0 +1,99 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.Student_GitRepositories
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student_GitRepositories</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepositoryUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepositoryUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastEditedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastEditedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GitRepositoryID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

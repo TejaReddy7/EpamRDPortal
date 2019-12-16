@@ -1,0 +1,143 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.Models.CollegeModel
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>*@
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+@{
+    ViewBag.Title = "UpdateCandidateColleges";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    p, div, input {
+        font: 16px Calibri;
+    }
+
+    .ui-autocomplete {
+        cursor: pointer;
+        height: 120px;
+        overflow-y: scroll;
+    }
+</style>
+<h2>Update Candidate Colleges</h2>
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+        <input type="button" id="btnSave" value="Submit" />
+    </p>*@
+<table class="table table-bordered table-responsive table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CollegeName)
+            </th>
+            <th>
+                New College Name
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.GetCollegesList())
+        {
+            <tr>
+                <td class="clstxtCollege">
+                    @Html.DisplayFor(modelItem => item.CollegeName)
+                </td>
+                <td class="clsdrpCollege">
+                    <input type="text" class="tbnewColleges" />
+                    @*@Html.DropDownListFor(m => m.CollegeID, new SelectList(item.GetColleges(), "CollegeID", "CollegeName"))*@
+                </td>
+                <td>
+                    <input type="button" class="updateCollege" id="btnSave" value="Submit" />
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.CollegeID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CollegeID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CollegeID })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        //BindControls();
+        $(".tbnewColleges").keyup(function (event) {
+            if ($(this).val().length > 2) {
+                var Countries = [];
+                var _this = this;
+                $.ajax({
+                    url: "/Colleges/GetColleges?value=" + $(_this).val(),
+                    type: "GET",
+                    success: function (data) {
+                        //data = $.parseJSON(data);
+                        $.each(data, function (i, v) {
+                            Countries.push(v.CollegeName);
+                        });
+                        //$.ajax({
+                        //    url: "/Colleges/GetColleges",
+                        //    type: "GET",
+                        //    success: function (data) {
+                        //        //data = $.parseJSON(data);
+                        //        $.each(data, function (i, v) {
+                        //            Countries.push(v.CollegeName);
+                        //        });
+                        //    }
+                        //});
+                        $(_this).autocomplete({
+                            source: Countries,
+                            minLength: 0,
+                            scroll: true
+                        }).focus(function () {
+                            $(this).autocomplete("search", "");
+                        });
+                    }
+                });
+            }
+        });
+    });
+
+    function BindControls() {
+        var Countries = [];
+        $.ajax({
+            url: "/Colleges/GetColleges",
+            type: "GET",
+            success: function (data) {
+                //data = $.parseJSON(data);
+                $.each(data, function (i, v) {
+                    Countries.push(v.CollegeName);
+                });
+            }
+        });
+        //var Countries = ['ARGENTINA',
+        //    'AUSTRALIA',
+        //    'BRAZIL',
+        //    'BELARUS',
+        //    'BHUTAN',
+        //    'CHILE',
+        //    'CAMBODIA',
+        //    'CANADA',
+        //    'DENMARK',
+        //    'DOMINICA',
+        //    'INDIA'];
+
+        $('.tbnewColleges').autocomplete({
+            source: Countries,
+            minLength: 0,
+            scroll: true
+        }).focus(function () {
+            $(this).autocomplete("search", "");
+        });
+    }
+    $(document).ready(function () {
+        $('.table').dataTable();
+    });
+    $(".updateCollege").click(function () {
+        var oldCollegeName = $(this).closest("td").closest("tr").find("td.clstxtCollege").html();
+        var newCollegeName = $(this).closest("td").closest("tr").find("td.clsdrpCollege").find("input").val();
+        $.ajax({
+            url: "/Colleges/UpdateCollege?oldCollegeName=" + oldCollegeName + "&newCollegeName=" + newCollegeName,
+            type: "GET",
+            success: function (data) {
+                $.notify("" + newCollegeName+" updated successfully", { showDuration: 400, hideDuration: 200000, position: "right bottom", className: "success" });
+            }
+        });
+    });
+</script>

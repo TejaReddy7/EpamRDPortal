@@ -1,0 +1,296 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.TechnicalAssessment
+
+@{
+    ViewBag.Title = "Technical Assessment Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Technical Assessment Form</h2>
+<hr />
+<div class="tab-pane fade in active" id="home">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        if (!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <div class="alert alert-success" role="alert">
+                <strong>Well done!</strong> @Model.SuccessMessage.
+            </div>
+        }
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.HiddenFor(model => model.StudentID)
+                @Html.HiddenFor(model => model.TestId)
+                @Html.HiddenFor(model => model.TechnicalAssessmentID)
+                @Html.HiddenFor(model => model.CreatedBy)
+                @Html.HiddenFor(model => model.LastEditedBy)
+                @Html.HiddenFor(model => model.EPAMFit)
+                <label class="control-label">Section 1 - Rating <span style="font-weight:100;font-style:italic">Classes /  Objects / Constructors</span> <font color="red">*</font></label>
+            </div>
+            <div class="form-group col-md-3">
+                <div class="form-check form-check-inline">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section1Rating, 1) 1
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section1Rating, 2) 2
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section1Rating, 3) 3
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section1Rating, 4) 4
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section1Rating, 5) 5
+                    </label>
+                </div>
+                <span id="errDivSection1Rating" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter rating for Section 1
+                </span>
+            </div>
+            <div class="form-group col-md-1">
+                <label>Remarks<font color="red">*</font></label>
+            </div>
+            <div class="form-group col-md-4">
+                @Html.TextArea("Section1Remarks", null, new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.PresentationSkills, new { htmlAttributes = new { @class = "form-control" } })*@
+                <span id="errDivSection1Remarks" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter remarks for Section 1
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Section 2 - Rating <span style="font-weight:100;font-style:italic">Data types: primitive vs reference</span> <font color="red">*</font></label>
+            </div>
+            <div class="form-group col-md-3">
+                <div class="form-check form-check-inline">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section2Rating, 1) 1
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section2Rating, 2) 2
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section2Rating, 3) 3
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section2Rating, 4) 4
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section2Rating, 5) 5
+                    </label>
+                </div>
+                <span id="errDivSection2Rating" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter rating for Section 2
+                </span>
+            </div>
+            <div class="form-group col-md-1"> <label>Remarks <font color="red">*</font></label></div>
+            <div class="form-group col-md-4">
+                @Html.TextArea("Section2Remarks", null, new { @class = "form-control" })
+                <span id="errDivSection2Remarks" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter remarks for Section 2
+                </span>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Section 3 - Rating <span style="font-weight:100;font-style:italic"> Inheritance / Abstraction / Polymorphism</span> <font color="red">*</font></label>
+            </div>
+            <div class="form-group col-md-3">
+                <div class="form-check form-check-inline">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section3Rating, 1) 1
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section3Rating, 2) 2
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section3Rating, 3) 3
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section3Rating, 4) 4
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section3Rating, 5) 5
+                    </label>
+                </div>
+                <span id="errDivSection3Rating" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter rating for Section 3
+                </span>
+            </div>
+            <div class="form-group col-md-1">
+                <label>Remarks <font color="red">*</font></label>
+            </div>
+            <div class="form-group col-md-4">
+                @Html.TextArea("Section3Remarks", null, new { @class = "form-control" })
+                <span id="errDivSection3Remarks" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter remarks for Section 3
+                </span>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="form-group col-md-4">
+                <label>Section 4 - Rating <span style="font-weight:100;font-style:italic">  Data Structures/Algorithms/Graph Theory </span><font color="red">*</font></label>
+
+            </div>
+            <div class="form-group col-md-3">
+                <div class="form-check form-check-inline">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section4Rating, 1) 1
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section4Rating, 2) 2
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section4Rating, 3) 3
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section4Rating, 4) 4
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section4Rating, 5) 5
+                    </label>
+                </div>
+                <span id="errDivSection4Rating" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter rating for Section 4
+                </span>
+            </div>
+            <div class="form-group col-md-1">
+                <label>Remarks <font color="red">*</font></label>
+            </div>
+            <div class="form-group col-md-4">
+                @Html.TextArea("Section4Remarks", null, new { @class = "form-control" })
+                <span id="errDivSection4Remarks" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter remarks for Section 4
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Section 5 -<span style="font-weight:100;font-style:italic"> Coding task questions (was student able to explain his code.)</span> <font color="red">*</font></label>
+            </div>
+            <div class="form-group col-md-3">
+                <div class="form-check form-check-inline">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section5Rating, 1) 1
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section5Rating, 2) 2
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section5Rating, 3) 3
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section5Rating, 4) 4
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.Section5Rating, 5) 5
+                    </label>
+                </div>
+
+                @*@Html.EditorFor(model => model.PresentationSkills, new { htmlAttributes = new { @class = "form-control" } })*@
+                <span id="errDivSection5Rating" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter rating for Section 5
+                </span>
+            </div>
+            <div class="form-group col-md-1">
+                <label>Remarks<font color="red">*</font></label>
+            </div>
+            <div class="form-group col-md-4">
+                @Html.TextArea("Section5Remarks", null, new { @class = "form-control" })
+                <span id="errDivSection5Remarks" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter remarks for Section 5
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Overall Rating <span style="font-weight:100;font-style:italic">  Recommendation for this student (1 - 2 minutes for this section)</span>  <font color="red">*</font></label>
+            </div>
+            <div class="form-group col-md-3">
+                <div class="form-check form-check-inline">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.OverallRating, 1) 1
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.OverallRating, 2) 2
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.OverallRating, 3) 3
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.OverallRating, 4) 4
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.OverallRating, 5) 5
+                    </label>
+                </div>
+                <span id="errDivOverallRating" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter rating for Section 5
+                </span>
+            </div>
+            <div class="form-group col-md-1">
+                <label>Remarks<font color="red">*</font></label>
+            </div>
+            <div class="form-group col-md-4">
+                @Html.TextArea("OverallRemarks", null, new { @class = "form-control" })
+                <span id="errDivOverallRemarks" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter Overall Remarks
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Additional Remarks <span style="font-weight:100;font-style:italic"> Overall evaluation remarks. Enter the other areas which are tested.</span></label>
+            </div>
+            <div class="form-group col-md-8">
+                @Html.TextArea("AdditionalRemarks", null, new { @class = "form-control" })
+                <span id="errDivOverallRemarks" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter Additional Remarks
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label>EPAM Fit <font color="red">*</font></label>
+
+            </div>
+            <div class="form-group col-md-4">
+                <div class="form-check form-check-inline">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.EPAMFit, 1, new { @disabled = "disabled" }) Hire
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.EPAMFit, 2, new { @disabled = "disabled" }) Reject
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(model => model.EPAMFit, 3, new { @disabled = "disabled" }) Need Second Opinion
+                    </label>
+                </div>
+                <span id="errDivEPAMFit" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                    Please enter EPAM Fit
+                </span>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Highly Recommended:</label>
+            </div>
+            <div class="form-group col-md-4">
+                <div class="form-check form-check-inline">
+                    <label class="radio-inline">
+                        @Html.CheckBox("HighlyRecommended", Model.HighlyRecommended)
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    }
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>

@@ -1,0 +1,259 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.HRAssessment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HRAssessment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TestId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PresentationSkills)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PresentationSkills)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfessionalImpression)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfessionalImpression)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SelfManagement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SelfManagement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommunicationInterpersonalSkills)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommunicationInterpersonalSkills)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StressTolerance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StressTolerance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DecisionMaking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DecisionMaking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Learnability)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Learnability)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizationalFit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizationalFit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Creative)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creative)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Expert)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Expert)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Original)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Original)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Candid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Candid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Intelligent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Intelligent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driven)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driven)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValueTheIndividual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValueTheIndividual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FocusOnCustomer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FocusOnCustomer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActAsATeam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActAsATeam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StriveForExcellence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StriveForExcellence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActWithIntegrity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActWithIntegrity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Humble)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Humble)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hungry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hungry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Smart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Smart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SignificantAchievements)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SignificantAchievements)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlansForFurtherStudies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlansForFurtherStudies)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CareerPlans)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CareerPlans)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OverallRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OverallRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OverallComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OverallComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recommendation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recommendation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HRAssessmentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

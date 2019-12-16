@@ -1,0 +1,6 @@
+D:\Raja Sekhar\RD Lab\RD Projects\PreEducationPortal\EPAM.RDPreEducationPortal.Repositories\bin\Debug\EPAM.RDPreEducationPortal.Repositories.dll
+D:\Raja Sekhar\RD Lab\RD Projects\PreEducationPortal\EPAM.RDPreEducationPortal.Repositories\bin\Debug\EPAM.RDPreEducationPortal.Repositories.pdb
+D:\Raja Sekhar\RD Lab\RD Projects\PreEducationPortal\EPAM.RDPreEducationPortal.Repositories\obj\Debug\EPAM.RDPreEducationPortal.DataAccess.csproj.CoreCompileInputs.cache
+D:\Raja Sekhar\RD Lab\RD Projects\PreEducationPortal\EPAM.RDPreEducationPortal.Repositories\obj\Debug\EPAM.RDPreEducationPortal.Repositories.dll
+D:\Raja Sekhar\RD Lab\RD Projects\PreEducationPortal\EPAM.RDPreEducationPortal.Repositories\obj\Debug\EPAM.RDPreEducationPortal.Repositories.pdb
+D:\Raja Sekhar\RD Lab\RD Projects\PreEducationPortal\EPAM.RDPreEducationPortal.Repositories\obj\Debug\EPAM.RDPreEducationPortal.DataAccess.csprojAssemblyReference.cache

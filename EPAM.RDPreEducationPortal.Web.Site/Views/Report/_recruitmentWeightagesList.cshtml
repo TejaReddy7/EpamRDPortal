@@ -1,0 +1,33 @@
+﻿@model IEnumerable<EPAM.RDPreEducationPortal.Web.Site.Models.ReportModel>
+@{
+    Layout = null;
+}
+<table style="width:100%" id="myTable" class="datatable table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th rowspan="2" class="text-center valign-middle">
+                Test name
+            </th>
+            <th class="text-center">
+                Coding Weightage
+            </th>
+            <th class="text-center">
+                Technical Weightage
+            </th>
+            <th class="text-center">
+                Weightage
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">@item.TestName</td>
+                <td class="align-center bold">@item.CodingWeightageOnSelection</td>
+                <td class="align-center bold">@item.TechnicalWeightageOnSelection</td>
+                <td class="align-center bold">@item.HRWeightageOnSelection</td>
+            </tr>
+        }
+    </tbody>
+</table>

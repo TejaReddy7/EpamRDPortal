@@ -1,0 +1,92 @@
+﻿@using System.Data.Entity
+@using EPAM.RDPreEducationPortal.Web.Site.EntityFramework
+@model IEnumerable<TechnicalAssessment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var db = new EpamRDPreEducationEntities();
+}
+<div class="container">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table table-hover table-bordered table-striped">
+        <tr>
+            <th>Candidate Name</th>
+            <th>Email</th>
+            <th>
+                EPAM Fit
+            </th>
+            <th>
+                Overall Rating
+            </th>
+            <th>
+                Section1 Rating
+            </th>
+
+            <th>
+                Section2 Rating
+            </th>
+
+            <th>
+                Section3 Rating
+            </th>
+
+            <th>
+                Section4 Rating
+            </th>
+
+            <th>
+                Section5 Rating
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@db.Candidate_Details.Find(item.StudentID).CandidateName</td>
+                <td>@db.Candidate_Details.Find(item.StudentID).EmailAddress</td>
+                <td>
+                    @if (item.EPAMFit == 1)
+                    {
+                        <input type="checkbox" disabled="disabled" value="true" checked />
+                    }
+                    else
+                    {
+                        <input type="checkbox" disabled="disabled" />
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OverallRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Section1Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Section2Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Section3Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Section4Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Section5Rating)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TechnicalAssessmentID })
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.StudentID })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

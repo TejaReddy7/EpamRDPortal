@@ -1,0 +1,100 @@
+﻿@using EPAM.RDPreEducationPortal.Web.Site.EntityFramework
+@model IEnumerable<EPAM.RDPreEducationPortal.Web.Site.EntityFramework.HRAssessment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var db = new EpamRDPreEducationEntities();
+}
+
+<h2>My Feedbacks</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-responsive table-bordered table-striped table-hover">
+    <tr>
+        <th>Candidate Name</th>
+        <th>Email</th>
+        <th>
+            Presentation Skills
+        </th>
+        <th>
+            Professional Impression
+        </th>
+        <th>
+            Decision Making
+        </th>
+        <th>
+            Learnability
+        </th>
+        <th>
+            Organizational Fit
+        </th>
+        <th>
+            Overall Rating
+        </th>
+        <th>
+            Overall Comments
+        </th>
+        <th>
+            EPAM FIT
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{ var cd = db.Candidate_Details.Find(item.StudentID);}
+                @if (cd != null)
+                {
+                    <lable>@cd.CandidateName</lable>
+                }
+            </td>
+            <td>
+                @if (cd != null)
+                {
+                    <lable>@cd.EmailAddress</lable>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PresentationSkills)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfessionalImpression)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DecisionMaking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Learnability)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrganizationalFit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OverallRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OverallComments)
+            </td>
+            <td>
+                @if (item.Recommendation == true)
+                {
+                    <input type="checkbox" disabled="disabled" value="true" checked />
+                }
+                else
+                {
+                    <input type="checkbox" disabled="disabled" />
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.HRAssessmentID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.HRAssessmentID })
+            </td>
+        </tr>
+    }
+
+</table>

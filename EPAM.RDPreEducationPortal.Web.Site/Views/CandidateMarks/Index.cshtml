@@ -1,0 +1,90 @@
+﻿@model IEnumerable<EPAM.RDPreEducationPortal.Web.Site.EntityFramework.Candidate_Marks>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Index</h2>
+<div class="container">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table style="width: 100%" id="myTable" class="datatable table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CandidateID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TestID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MCQs)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodingChallenge1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodingChallenge2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodingChallenge3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MarksScored)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoundType)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CandidateID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TestID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MCQs)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodingChallenge1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodingChallenge2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodingChallenge3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MarksScored)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Result)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoundType)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MarksID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.MarksID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MarksID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#myTable').dataTable();
+    });
+</script>

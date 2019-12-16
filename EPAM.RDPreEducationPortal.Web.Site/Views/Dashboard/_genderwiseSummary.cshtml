@@ -1,0 +1,78 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.Models.DashboardModel
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<table class="table table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th>Location Name</th>
+        <th>Gender</th>
+        <th>Passed in 2nd Round</th>
+        <th>Passed in Technical</th>
+        <th>Passed in HR</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td rowspan="2">Test</td>
+        <td> Male</td>
+        <td rowspan="2"> Test</td>
+        <td rowspan="2"> 23 34 3 4</td>
+        <td rowspan="2">sdsd sd </td>
+    </tr>
+    <tr>
+        <td>Female</td>
+    </tr>
+    </tbody>
+</table>
+@*<table style="width:100%" id="myTable" class="datatable table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th rowspan="2" class="text-center valign-middle">
+                Test name
+            </th>
+            <th colspan="2" class="text-center">
+                Second Round
+            </th>
+            <th colspan="2" class="text-center">
+                Technical
+            </th>
+            <th colspan="2" class="text-center">HR</th>
+        </tr>
+        <tr>
+            <th class="text-center">
+                Passed
+            </th>
+            <th class="text-center">
+                Rejected
+            </th>
+            <th class="text-center">
+                Passed
+            </th>
+            <th class="text-center">
+                Rejected
+            </th>
+            <th class="text-center">
+                Passed
+            </th>
+            <th class="text-center">
+                Rejected
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RecruitmentSummaryList())
+        {
+        <tr>
+            <td class="text-center">@item.TestName</td>
+            <td class="align-center bold">@item.PassedIn2ndRound</td>
+            <td class="align-center bold">@item.PassedInTechnical</td>
+            <td class="align-center bold">@item.PassedInHR</td>
+            <td class="align-center bold">@item.PassedIn2ndRound</td>
+            <td class="align-center bold">@item.PassedInTechnical</td>
+            <td class="align-center bold">@item.PassedInHR</td>
+        </tr>
+        }
+    </tbody>
+</table>*@

@@ -1,0 +1,105 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.Candidate_Details
+
+@{
+    ViewBag.Title = "Recruitment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+<div class="container">
+    <h2>Recruitment Report</h2>
+    @using (Html.BeginForm("UploadCandidates", "CandidateDetails", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div class="row">
+        <hr />
+        <div class="col-md-12">
+            <div class="form-group col-md-2">
+                <label for="RecruitmentId">Recruitment</label>
+            </div>
+            <div class="form-group col-md-4">
+                @Html.DropDownListFor(model => model.RecruitmentId, new SelectList(Enumerable.Empty<SelectListItem>(), "RecruitmentId", "Name"), new { @class = "form-control" })
+            </div>
+            @*<div class="form-group col-md-2">
+                <label for="RoundType">Round Type</label>
+            </div>
+            <div class="form-group col-md-4">
+                <select class="form-control" data-val="true" data-val-number="The field RecruitmentId must be a number." id="RoundTypeId" name="RoundTypeId" data-fillr-id="219612236" data-fillr="bound" autocomplete="off">
+                    <option value="0">Select Round Type</option>
+                    <option value="OnlineCodingChallenge">Online Coding Challenge</option>
+                    <option value="SecondRound">2nd Round Coding Challenge</option>
+                    <option value="TechnicalFeedback">Technical 1x1 Feedback</option>
+                    <option value="HRFeedback">HR Feedback</option>
+                </select>
+            </div>*@
+        </div>
+        <div class="form-group" id="divSelectionWeightages">
+        </div>
+        <div class="form-group">
+            <input type="button" id="btnGenerateReport" value="Generate" class="btn btn-success" />
+            <input type="button" id="btnExportReport" value="Export Report" class="btn btn-success" />
+        </div>
+        <div class="form-group" id="divRecruitmentReport">
+        </div>
+    </div>
+    }
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON("/Recruitments/List",
+            function (classesData) {
+                var select = $("#RecruitmentId");
+                select.empty();
+                select.append($('<option/>', {
+                    value: 0,
+                    text: "Select a Recruitments"
+                }));
+                $.each(classesData, function (index, itemData) {
+                    select.append($('<option/>', {
+                        value: itemData.RecruitmentID,
+                        text: itemData.Name
+                    }));
+                });
+            });
+    });
+    $("#RecruitmentId").change(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Report/RecruitmentWeightagesList?recruitmentId=" + $("#RecruitmentId").val(),
+            cache: false,
+            success: function (data) {
+                $("#divSelectionWeightages").html(data);
+            },
+            error: function (data) {
+
+            }
+        });
+    });
+    $("#btnGenerateReport").click(function () {
+        //window.location = '/Report/RecruitmentExcelExport';
+        $.ajax({
+            type: "POST",
+            url: "/Report/GenerateReport?recruitmentId=" + $("#RecruitmentId").val() + "&roundType=" + $("#RoundTypeId").val(),
+            cache: false,
+            success: function (data) {
+                $("#divRecruitmentReport").html(data);
+                $('#myTable').dataTable();
+            },
+            error: function (data) {
+
+            }
+        });
+    });
+    $("#btnExportReport").click(function () {
+        //window.location = '/Report/RecruitmentExcelExport';
+        $.ajax({
+            type: "POST",
+            url: "/Report/RecruitmentExcelExport?recruitmentId=" + $("#RecruitmentId").val() + "&roundType=" + $("#RoundTypeId").val(),
+            cache: false,
+            success: function (data) {
+                window.location = '/Report/Download';
+            },
+            error: function (data) {
+
+            }
+        });
+    });
+</script>

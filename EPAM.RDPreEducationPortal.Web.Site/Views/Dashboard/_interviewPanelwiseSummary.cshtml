@@ -1,0 +1,35 @@
+﻿@model IEnumerable<EPAM.RDPreEducationPortal.Web.Site.Models.DashboardModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<table style="width:100%" id="myTable" class="datatable table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center valign-middle">
+                Interviewer
+            </th>
+            <th class="text-center valign-middle">
+                Interviewes Taken
+            </th>
+            <th class="text-center valign-middle">
+                Accepted
+            </th>
+            <th class="text-center valign-middle">
+                Rejected
+            </th>
+        </tr>
+        
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td class="text-center">@item.InterviewerName</td>
+            <td class="align-center bold">@item.InterviewesTaken</td>
+            <td class="text-center bold">@item.Accepted</td>
+            <td class="align-center bold">@item.Rejected</td>
+        </tr>
+        }
+    </tbody>
+</table>

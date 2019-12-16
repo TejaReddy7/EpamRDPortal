@@ -1,0 +1,629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EpamRDPreEducationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AttendeeDetails">
+    <Key>
+      <PropertyRef Name="AttendeeID" />
+    </Key>
+    <Property Name="AttendeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="WebinarID" Type="int" />
+    <Property Name="Attended" Type="nvarchar" MaxLength="50" />
+    <Property Name="InterestRating" Type="int" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="200" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="200" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="200" />
+    <Property Name="RegistrationDateTime" Type="datetime" />
+    <Property Name="JoinTimeLeaveTimeTimeinSession" Type="nvarchar" MaxLength="200" />
+    <Property Name="TimeinSession" Type="nvarchar" MaxLength="200" />
+    <Property Name="Unsubscribed" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LastEditedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastEditedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Candidate_Details">
+    <Key>
+      <PropertyRef Name="CandidateID" />
+    </Key>
+    <Property Name="CandidateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecruitmentId" Type="int" />
+    <Property Name="TestId" Type="int" />
+    <Property Name="CandidateName" Type="nvarchar" MaxLength="300" />
+    <Property Name="CandidateLocationID" Type="int" />
+    <Property Name="CandidateEmail" Type="nvarchar" MaxLength="300" />
+    <Property Name="ContactNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="CandidateResume" Type="nvarchar" MaxLength="1000" />
+    <Property Name="StartedOn" Type="datetime" />
+    <Property Name="StartingTime" Type="datetime" />
+    <Property Name="PreviousAssessments" Type="int" />
+    <Property Name="Duration" Type="nvarchar" MaxLength="100" />
+    <Property Name="MarksScored" Type="float" />
+    <Property Name="Result" Type="bit" />
+    <Property Name="Report" Type="nvarchar" MaxLength="100" />
+    <Property Name="PublicReport" Type="nvarchar" MaxLength="1000" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="GraduationCollegeName" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Graduation" Type="nvarchar" MaxLength="100" />
+    <Property Name="GraduationSpecialty" Type="nvarchar" MaxLength="100" />
+    <Property Name="YearOfPassedOut" Type="int" />
+    <Property Name="GraduationMarksCGPA" Type="nvarchar" MaxLength="50" />
+    <Property Name="12MarksCGPA" Type="nvarchar" MaxLength="100" />
+    <Property Name="10MarksCGPA" Type="nvarchar" MaxLength="100" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="PermanentAddress" Type="nvarchar(max)" />
+    <Property Name="PermanentStateOfResidence" Type="nvarchar" MaxLength="500" />
+    <Property Name="CurrentAddress" Type="nvarchar(max)" />
+    <Property Name="GovernmentIssuedIDProof" Type="nvarchar" MaxLength="100" />
+    <Property Name="PreferredJobLocation" Type="nvarchar" MaxLength="100" />
+    <Property Name="SecondRoundPublicReport" Type="nvarchar" MaxLength="1000" />
+    <Property Name="IsPEPStudent" Type="bit" />
+    <Property Name="IsCodathonWinner" Type="bit" />
+    <Property Name="IsGDCleared" Type="bit" />
+    <Property Name="GDComments" Type="nvarchar(max)" />
+    <Property Name="PreferredLocationForSecondRound" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Candidate_Marks">
+    <Key>
+      <PropertyRef Name="MarksID" />
+    </Key>
+    <Property Name="MarksID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CandidateID" Type="int" />
+    <Property Name="TestID" Type="int" />
+    <Property Name="MCQs" Type="float" />
+    <Property Name="CodingChallenge1" Type="float" />
+    <Property Name="CodingChallenge2" Type="float" />
+    <Property Name="CodingChallenge3" Type="float" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LastEditedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastEditedDate" Type="datetime" />
+    <Property Name="MarksScored" Type="nvarchar" MaxLength="100" />
+    <Property Name="Result" Type="nvarchar" MaxLength="100" />
+    <Property Name="RoundType" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Colleges">
+    <Key>
+      <PropertyRef Name="CollegeID" />
+    </Key>
+    <Property Name="CollegeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CollegeName" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="EmailRecipients">
+    <Key>
+      <PropertyRef Name="EmailRecipientID" />
+    </Key>
+    <Property Name="EmailRecipientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="200" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CollegeId" Type="int" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="Emails">
+    <Key>
+      <PropertyRef Name="EmailId" />
+    </Key>
+    <Property Name="EmailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WebinarDate" Type="datetime" />
+    <Property Name="ToEmail" Type="nvarchar" MaxLength="1000" />
+    <Property Name="FromEmail" Type="nvarchar" MaxLength="1000" />
+    <Property Name="CC" Type="nvarchar" MaxLength="1000" />
+    <Property Name="BCC" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="500" />
+    <Property Name="EmailContent" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="HRAssessments">
+    <Key>
+      <PropertyRef Name="HRAssessmentID" />
+    </Key>
+    <Property Name="HRAssessmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TestId" Type="int" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="PresentationSkills" Type="int" />
+    <Property Name="ProfessionalImpression" Type="int" />
+    <Property Name="SelfManagement" Type="int" />
+    <Property Name="CommunicationInterpersonalSkills" Type="int" />
+    <Property Name="StressTolerance" Type="int" />
+    <Property Name="DecisionMaking" Type="int" />
+    <Property Name="Learnability" Type="int" />
+    <Property Name="OrganizationalFit" Type="int" />
+    <Property Name="Creative" Type="int" />
+    <Property Name="Expert" Type="int" />
+    <Property Name="Original" Type="int" />
+    <Property Name="Candid" Type="int" />
+    <Property Name="Intelligent" Type="int" />
+    <Property Name="Driven" Type="int" />
+    <Property Name="ValueTheIndividual" Type="int" />
+    <Property Name="FocusOnCustomer" Type="int" />
+    <Property Name="ActAsATeam" Type="int" />
+    <Property Name="StriveForExcellence" Type="int" />
+    <Property Name="ActWithIntegrity" Type="int" />
+    <Property Name="Humble" Type="int" />
+    <Property Name="Hungry" Type="int" />
+    <Property Name="Smart" Type="int" />
+    <Property Name="SignificantAchievements" Type="nvarchar" MaxLength="4000" />
+    <Property Name="PlansForFurtherStudies" Type="nvarchar" MaxLength="1000" />
+    <Property Name="CareerPlans" Type="nvarchar" MaxLength="1000" />
+    <Property Name="OverallRating" Type="int" />
+    <Property Name="OverallComments" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Recommendation" Type="bit" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LastEditedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastEditedDate" Type="datetime" />
+    <Property Name="HighlyRecommended" Type="bit" />
+    <Property Name="IsSubmitted" Type="bit" />
+  </EntityType>
+  <EntityType Name="Master_Gender">
+    <Key>
+      <PropertyRef Name="GenderId" />
+    </Key>
+    <Property Name="GenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Master_Locations">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Master_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
+    <Property Name="RoleKey" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Recruitment_Rounds">
+    <Key>
+      <PropertyRef Name="RoundID" />
+    </Key>
+    <Property Name="RoundID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoundName" Type="nvarchar" MaxLength="200" />
+    <Property Name="RoundKey" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Recruitments">
+    <Key>
+      <PropertyRef Name="RecruitmentID" />
+    </Key>
+    <Property Name="RecruitmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Sessions">
+    <Key>
+      <PropertyRef Name="SessionId" />
+    </Key>
+    <Property Name="SessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SessionName" Type="nvarchar" MaxLength="200" />
+    <Property Name="ScheduleDate" Type="datetime" />
+    <Property Name="ScheduleTime" Type="nvarchar" MaxLength="200" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+    <Property Name="ReferenceLinks" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Tutor" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LastEditedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastEditedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Sonar_Issues">
+    <Key>
+      <PropertyRef Name="SonarIssueID" />
+    </Key>
+    <Property Name="SonarIssueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GitRepositoryID" Type="int" />
+    <Property Name="Key" Type="nvarchar" MaxLength="200" />
+    <Property Name="Rule" Type="nvarchar" MaxLength="200" />
+    <Property Name="Severity" Type="nvarchar" MaxLength="200" />
+    <Property Name="Component" Type="nvarchar" MaxLength="200" />
+    <Property Name="Project" Type="nvarchar" MaxLength="200" />
+    <Property Name="Line" Type="nvarchar" MaxLength="200" />
+    <Property Name="Hash" Type="nvarchar" MaxLength="200" />
+    <Property Name="TextRange" Type="nvarchar" MaxLength="200" />
+    <Property Name="Status" Type="nvarchar" MaxLength="200" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="Effort" Type="nvarchar" MaxLength="200" />
+    <Property Name="Debt" Type="nvarchar" MaxLength="200" />
+    <Property Name="Author" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="nvarchar" MaxLength="200" />
+    <Property Name="Organization" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LastEditedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastEditedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Student_GitRepositories">
+    <Key>
+      <PropertyRef Name="GitRepositoryID" />
+    </Key>
+    <Property Name="GitRepositoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="TaskId" Type="int" />
+    <Property Name="RepositoryUrl" Type="nvarchar" MaxLength="200" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="ProjectName" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsEmailSent" Type="bit" />
+    <Property Name="Comments" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LastEditedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastEditedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="CollegeId" Type="int" />
+    <Property Name="ContactNumber" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LastEditedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastEditedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="TaskId" />
+    </Key>
+    <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskName" Type="nvarchar" MaxLength="250" />
+    <Property Name="TaskDescription" Type="nvarchar" MaxLength="2000" />
+    <Property Name="EstimatedCompletionDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LastEditedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastEditedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TechnicalAssessments">
+    <Key>
+      <PropertyRef Name="TechnicalAssessmentID" />
+    </Key>
+    <Property Name="TechnicalAssessmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TestId" Type="int" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="Section1Rating" Type="int" />
+    <Property Name="Section1Remarks" Type="nvarchar(max)" />
+    <Property Name="Section2Rating" Type="int" />
+    <Property Name="Section2Remarks" Type="nvarchar(max)" />
+    <Property Name="Section3Rating" Type="int" />
+    <Property Name="Section3Remarks" Type="nvarchar(max)" />
+    <Property Name="Section4Rating" Type="int" />
+    <Property Name="Section4Remarks" Type="nvarchar(max)" />
+    <Property Name="Section5Rating" Type="int" />
+    <Property Name="Section5Remarks" Type="nvarchar(max)" />
+    <Property Name="EPAMFit" Type="int" />
+    <Property Name="OverallRemarks" Type="nvarchar(max)" />
+    <Property Name="OverallRating" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LastEditedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastEditedDate" Type="datetime" />
+    <Property Name="AdditionalRemarks" Type="nvarchar(max)" />
+    <Property Name="AdditionalRating" Type="int" />
+    <Property Name="HighlyRecommended" Type="bit" />
+    <Property Name="IsSubmitted" Type="bit" />
+  </EntityType>
+  <EntityType Name="TestsHosted">
+    <Key>
+      <PropertyRef Name="TestId" />
+    </Key>
+    <Property Name="TestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecruitmentId" Type="int" Nullable="false" />
+    <Property Name="TestName" Type="nvarchar" MaxLength="100" />
+    <Property Name="TestKey" Type="nvarchar" MaxLength="50" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="CutoffPercentage" Type="int" />
+    <Property Name="TotalScore" Type="int" />
+    <Property Name="Duration" Type="nvarchar" MaxLength="100" />
+    <Property Name="LocationId" Type="int" />
+    <Property Name="CodingWeightageOnSelection1" Type="int" />
+    <Property Name="TechnicalWeightageOnSelection" Type="int" />
+    <Property Name="HRWeightageOnSelection" Type="int" />
+  </EntityType>
+  <EntityType Name="User_Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="RoleId" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Password" Type="nvarchar" MaxLength="250" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="250" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="250" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="250" />
+    <Property Name="GenderId" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" />
+    <Property Name="ContactNumber" Type="nvarchar" MaxLength="250" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="CollegeId" Type="int" />
+    <Property Name="MarksScored" Type="int" />
+    <Property Name="GraduationSpecialty" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmailAddressToSendNotifications" Type="nvarchar" MaxLength="250" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LastEditedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastEditedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Webinar">
+    <Key>
+      <PropertyRef Name="WebinarID" />
+    </Key>
+    <Property Name="WebinarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActualStartDate" Type="datetime" />
+    <Property Name="Duration" Type="nvarchar" MaxLength="200" />
+    <Property Name="Registered" Type="int" />
+    <Property Name="Attended" Type="int" />
+    <Property Name="ClickedRegistrationLink" Type="int" />
+    <Property Name="OpenedInvitation" Type="int" />
+  </EntityType>
+  <EntityType Name="Webinar_Registrants">
+    <Key>
+      <PropertyRef Name="RegistrantId" />
+    </Key>
+    <Property Name="RegistrantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WebinarID" Type="int" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="200" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="RegistrationDate" Type="datetime" />
+    <Property Name="Unsubscribed" Type="bit" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LastEditedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastEditedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Webinar_Registration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WebinarID" Type="nvarchar" MaxLength="200" />
+    <Property Name="WebinarName" Type="nvarchar" MaxLength="200" />
+    <Property Name="ScheduledStartDate" Type="datetime" />
+    <Property Name="Registered" Type="int" />
+    <Property Name="ScheduledStartTime" Type="time" Precision="7" />
+    <Property Name="ScheduledDurationMinutes" Type="int" />
+    <Property Name="ClickedRegistrationLink" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LastEditedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastEditedDate" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_EmailRecipients_CollegeID">
+    <End Role="Colleges" Type="Self.Colleges" Multiplicity="0..1" />
+    <End Role="EmailRecipients" Type="Self.EmailRecipients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Colleges">
+        <PropertyRef Name="CollegeID" />
+      </Principal>
+      <Dependent Role="EmailRecipients">
+        <PropertyRef Name="CollegeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Colleges">
+    <End Role="Colleges" Type="Self.Colleges" Multiplicity="0..1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Colleges">
+        <PropertyRef Name="CollegeID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="CollegeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Delete_Student_GitRepositories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GitRepositoryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_GetFormattedColumnName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+    <Parameter Name="columnName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Generate_GetScriptWithPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Table_Name" Type="varchar" Mode="In" />
+    <Parameter Name="Primary_Key" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Generate_UpdateScriptWithPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Table_Name" Type="varchar" Mode="In" />
+    <Parameter Name="Primary_Key" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Generate_WebinarReportCollegewise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_Candidate_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TestId" Type="int" Mode="In" />
+    <Parameter Name="Role" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Get_Candidate_Details_HREligible" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TestId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Get_Colleges" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CollegeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Get_RecruitmentReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecruitmentId" Type="int" Mode="In" />
+    <Parameter Name="RoundType" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GET_Student_GitRepositories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GitRepositoryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Get_UserDetails_SonarReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GitRepositoryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Get_UsersOnUserNameAndPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Get_WebinarAbsenteesCollegewise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="WebinarDate" Type="varchar" Mode="In" />
+    <Parameter Name="CollegeId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RandChars" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="len" Type="int" Mode="In" />
+    <Parameter Name="min" Type="tinyint" Mode="In" />
+    <Parameter Name="range" Type="tinyint" Mode="In" />
+    <Parameter Name="exclude" Type="varchar" Mode="In" />
+    <Parameter Name="output" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="Report_RecruitmentSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Recruitmentid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Report_RecruitmentSummary_Genderwise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Recruitmentid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Report_WebinarAttendance_Collegewise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Report_WebinarAttendance_Studentwise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="String" Type="nvarchar" Mode="In" />
+    <Parameter Name="Delimiter" Type="nchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Id" Type="bigint" />
+          <Property Name="Data" Type="nvarchar" MaxLength="4000" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="Update_AttendeeDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AttendeeID" Type="int" Mode="InOut" />
+    <Parameter Name="StudentID" Type="int" Mode="In" />
+    <Parameter Name="WebinarID" Type="int" Mode="In" />
+    <Parameter Name="Attended" Type="nvarchar" Mode="In" />
+    <Parameter Name="InterestRating" Type="int" Mode="In" />
+    <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="RegistrationDateTime" Type="varchar" Mode="In" />
+    <Parameter Name="JoinTimeLeaveTimeTimeinSession" Type="nvarchar" Mode="In" />
+    <Parameter Name="TimeinSession" Type="nvarchar" Mode="In" />
+    <Parameter Name="Unsubscribed" Type="nvarchar" Mode="In" />
+    <Parameter Name="Who" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Update_GitRepositories_EmailStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GitRepositoryID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Update_Sonar_Issues" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SonarIssueID" Type="int" Mode="InOut" />
+    <Parameter Name="GitRepositoryID" Type="int" Mode="In" />
+    <Parameter Name="Key" Type="nvarchar" Mode="In" />
+    <Parameter Name="Rule" Type="nvarchar" Mode="In" />
+    <Parameter Name="Severity" Type="nvarchar" Mode="In" />
+    <Parameter Name="Component" Type="nvarchar" Mode="In" />
+    <Parameter Name="Project" Type="nvarchar" Mode="In" />
+    <Parameter Name="Line" Type="nvarchar" Mode="In" />
+    <Parameter Name="Hash" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+    <Parameter Name="Message" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Effort" Type="nvarchar" Mode="In" />
+    <Parameter Name="Debt" Type="nvarchar" Mode="In" />
+    <Parameter Name="Author" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreationDate" Type="varchar" Mode="In" />
+    <Parameter Name="UpdateDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="Organization" Type="nvarchar" Mode="In" />
+    <Parameter Name="Who" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Update_Users" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="InOut" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="ContactNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="College" Type="nvarchar" Mode="In" />
+    <Parameter Name="MarksScored" Type="int" Mode="In" />
+    <Parameter Name="GraduationSpecialty" Type="nvarchar" Mode="In" />
+    <Parameter Name="Who" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Update_Webinar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="WebinarID" Type="int" Mode="InOut" />
+    <Parameter Name="ActualStartDate" Type="varchar" Mode="In" />
+    <Parameter Name="Duration" Type="nvarchar" Mode="In" />
+    <Parameter Name="Registered" Type="int" Mode="In" />
+    <Parameter Name="Attended" Type="int" Mode="In" />
+    <Parameter Name="ClickedRegistrationLink" Type="int" Mode="In" />
+    <Parameter Name="OpenedInvitation" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Update_Webinar_Registrants" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RegistrantId" Type="int" Mode="InOut" />
+    <Parameter Name="WebinarID" Type="int" Mode="In" />
+    <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="RegistrationDate" Type="datetime" Mode="In" />
+    <Parameter Name="Unsubscribed" Type="bit" Mode="In" />
+    <Parameter Name="Who" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Update_Webinar_Registration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="InOut" />
+    <Parameter Name="WebinarID" Type="nvarchar" Mode="In" />
+    <Parameter Name="WebinarName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ScheduledStartDate" Type="datetime" Mode="In" />
+    <Parameter Name="Registered" Type="int" Mode="In" />
+    <Parameter Name="ScheduledStartTime" Type="time" Mode="In" />
+    <Parameter Name="ScheduledDurationMinutes" Type="int" Mode="In" />
+    <Parameter Name="ClickedRegistrationLink" Type="int" Mode="In" />
+    <Parameter Name="Who" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ValidateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="EpamRDPreEducationModelStoreContainer">
+    <EntitySet Name="AttendeeDetails" EntityType="Self.AttendeeDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Candidate_Details" EntityType="Self.Candidate_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Candidate_Marks" EntityType="Self.Candidate_Marks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Colleges" EntityType="Self.Colleges" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmailRecipients" EntityType="Self.EmailRecipients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Emails" EntityType="Self.Emails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRAssessments" EntityType="Self.HRAssessments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Master_Gender" EntityType="Self.Master_Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Master_Locations" EntityType="Self.Master_Locations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Master_Roles" EntityType="Self.Master_Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Recruitment_Rounds" EntityType="Self.Recruitment_Rounds" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Recruitments" EntityType="Self.Recruitments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sonar_Issues" EntityType="Self.Sonar_Issues" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_GitRepositories" EntityType="Self.Student_GitRepositories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TechnicalAssessments" EntityType="Self.TechnicalAssessments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TestsHosted" EntityType="Self.TestsHosted" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Role" EntityType="Self.User_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Webinar" EntityType="Self.Webinar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Webinar_Registrants" EntityType="Self.Webinar_Registrants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Webinar_Registration" EntityType="Self.Webinar_Registration" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_EmailRecipients_CollegeID" Association="Self.FK_EmailRecipients_CollegeID">
+      <End Role="Colleges" EntitySet="Colleges" />
+      <End Role="EmailRecipients" EntitySet="EmailRecipients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Colleges" Association="Self.FK_Students_Colleges">
+      <End Role="Colleges" EntitySet="Colleges" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

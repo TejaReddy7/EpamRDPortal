@@ -1,0 +1,701 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EpamRDPreEducationModelStoreContainer" CdmEntityContainer="EpamRDPreEducationEntities">
+    <EntitySetMapping Name="AttendeeDetails">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.AttendeeDetail">
+        <MappingFragment StoreEntitySet="AttendeeDetails">
+          <ScalarProperty Name="AttendeeID" ColumnName="AttendeeID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="WebinarID" ColumnName="WebinarID" />
+          <ScalarProperty Name="Attended" ColumnName="Attended" />
+          <ScalarProperty Name="InterestRating" ColumnName="InterestRating" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="RegistrationDateTime" ColumnName="RegistrationDateTime" />
+          <ScalarProperty Name="JoinTimeLeaveTimeTimeinSession" ColumnName="JoinTimeLeaveTimeTimeinSession" />
+          <ScalarProperty Name="TimeinSession" ColumnName="TimeinSession" />
+          <ScalarProperty Name="Unsubscribed" ColumnName="Unsubscribed" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colleges">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.College">
+        <MappingFragment StoreEntitySet="Colleges">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CollegeID" ColumnName="CollegeID" />
+          <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailRecipients">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.EmailRecipient">
+        <MappingFragment StoreEntitySet="EmailRecipients">
+          <ScalarProperty Name="EmailRecipientID" ColumnName="EmailRecipientID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Master_Gender">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Master_Gender">
+        <MappingFragment StoreEntitySet="Master_Gender">
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Session">
+        <MappingFragment StoreEntitySet="Sessions">
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="SessionName" ColumnName="SessionName" />
+          <ScalarProperty Name="ScheduleDate" ColumnName="ScheduleDate" />
+          <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ReferenceLinks" ColumnName="ReferenceLinks" />
+          <ScalarProperty Name="Tutor" ColumnName="Tutor" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sonar_Issues">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Sonar_Issues">
+        <MappingFragment StoreEntitySet="Sonar_Issues">
+          <ScalarProperty Name="SonarIssueID" ColumnName="SonarIssueID" />
+          <ScalarProperty Name="GitRepositoryID" ColumnName="GitRepositoryID" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Rule" ColumnName="Rule" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="Component" ColumnName="Component" />
+          <ScalarProperty Name="Project" ColumnName="Project" />
+          <ScalarProperty Name="Line" ColumnName="Line" />
+          <ScalarProperty Name="Hash" ColumnName="Hash" />
+          <ScalarProperty Name="TextRange" ColumnName="TextRange" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Effort" ColumnName="Effort" />
+          <ScalarProperty Name="Debt" ColumnName="Debt" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="Organization" ColumnName="Organization" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_GitRepositories">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Student_GitRepositories">
+        <MappingFragment StoreEntitySet="Student_GitRepositories">
+          <ScalarProperty Name="IsEmailSent" ColumnName="IsEmailSent" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="GitRepositoryID" ColumnName="GitRepositoryID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="RepositoryUrl" ColumnName="RepositoryUrl" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Student">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Task">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="EstimatedCompletionDate" ColumnName="EstimatedCompletionDate" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskDescription" ColumnName="TaskDescription" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Role">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.User_Role">
+        <MappingFragment StoreEntitySet="User_Role">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+          <ScalarProperty Name="MarksScored" ColumnName="MarksScored" />
+          <ScalarProperty Name="GraduationSpecialty" ColumnName="GraduationSpecialty" />
+          <ScalarProperty Name="EmailAddressToSendNotifications" ColumnName="EmailAddressToSendNotifications" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Webinars">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Webinar">
+        <MappingFragment StoreEntitySet="Webinar">
+          <ScalarProperty Name="WebinarID" ColumnName="WebinarID" />
+          <ScalarProperty Name="ActualStartDate" ColumnName="ActualStartDate" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Registered" ColumnName="Registered" />
+          <ScalarProperty Name="Attended" ColumnName="Attended" />
+          <ScalarProperty Name="ClickedRegistrationLink" ColumnName="ClickedRegistrationLink" />
+          <ScalarProperty Name="OpenedInvitation" ColumnName="OpenedInvitation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Webinar_Registrants">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Webinar_Registrants">
+        <MappingFragment StoreEntitySet="Webinar_Registrants">
+          <ScalarProperty Name="RegistrantId" ColumnName="RegistrantId" />
+          <ScalarProperty Name="WebinarID" ColumnName="WebinarID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="Unsubscribed" ColumnName="Unsubscribed" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Webinar_Registration">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Webinar_Registration">
+        <MappingFragment StoreEntitySet="Webinar_Registration">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WebinarID" ColumnName="WebinarID" />
+          <ScalarProperty Name="WebinarName" ColumnName="WebinarName" />
+          <ScalarProperty Name="ScheduledStartDate" ColumnName="ScheduledStartDate" />
+          <ScalarProperty Name="Registered" ColumnName="Registered" />
+          <ScalarProperty Name="ScheduledStartTime" ColumnName="ScheduledStartTime" />
+          <ScalarProperty Name="ScheduledDurationMinutes" ColumnName="ScheduledDurationMinutes" />
+          <ScalarProperty Name="ClickedRegistrationLink" ColumnName="ClickedRegistrationLink" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emails">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Email">
+        <MappingFragment StoreEntitySet="Emails">
+          <ScalarProperty Name="WebinarDate" ColumnName="WebinarDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="EmailContent" ColumnName="EmailContent" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="BCC" ColumnName="BCC" />
+          <ScalarProperty Name="CC" ColumnName="CC" />
+          <ScalarProperty Name="FromEmail" ColumnName="FromEmail" />
+          <ScalarProperty Name="ToEmail" ColumnName="ToEmail" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Candidate_Details">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Candidate_Details">
+        <MappingFragment StoreEntitySet="Candidate_Details">
+          <ScalarProperty Name="PreferredLocationForSecondRound" ColumnName="PreferredLocationForSecondRound" />
+          <ScalarProperty Name="GDComments" ColumnName="GDComments" />
+          <ScalarProperty Name="IsGDCleared" ColumnName="IsGDCleared" />
+          <ScalarProperty Name="IsCodathonWinner" ColumnName="IsCodathonWinner" />
+          <ScalarProperty Name="IsPEPStudent" ColumnName="IsPEPStudent" />
+          <ScalarProperty Name="SecondRoundPublicReport" ColumnName="SecondRoundPublicReport" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="RecruitmentId" ColumnName="RecruitmentId" />
+          <ScalarProperty Name="PreferredJobLocation" ColumnName="PreferredJobLocation" />
+          <ScalarProperty Name="GovernmentIssuedIDProof" ColumnName="GovernmentIssuedIDProof" />
+          <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+          <ScalarProperty Name="PermanentStateOfResidence" ColumnName="PermanentStateOfResidence" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="C10MarksCGPA" ColumnName="10MarksCGPA" />
+          <ScalarProperty Name="C12MarksCGPA" ColumnName="12MarksCGPA" />
+          <ScalarProperty Name="GraduationMarksCGPA" ColumnName="GraduationMarksCGPA" />
+          <ScalarProperty Name="YearOfPassedOut" ColumnName="YearOfPassedOut" />
+          <ScalarProperty Name="GraduationSpecialty" ColumnName="GraduationSpecialty" />
+          <ScalarProperty Name="Graduation" ColumnName="Graduation" />
+          <ScalarProperty Name="GraduationCollegeName" ColumnName="GraduationCollegeName" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="PublicReport" ColumnName="PublicReport" />
+          <ScalarProperty Name="Report" ColumnName="Report" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="MarksScored" ColumnName="MarksScored" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="PreviousAssessments" ColumnName="PreviousAssessments" />
+          <ScalarProperty Name="StartingTime" ColumnName="StartingTime" />
+          <ScalarProperty Name="StartedOn" ColumnName="StartedOn" />
+          <ScalarProperty Name="CandidateResume" ColumnName="CandidateResume" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="CandidateEmail" ColumnName="CandidateEmail" />
+          <ScalarProperty Name="CandidateLocationID" ColumnName="CandidateLocationID" />
+          <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRAssessments">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.HRAssessment">
+        <MappingFragment StoreEntitySet="HRAssessments">
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Recommendation" ColumnName="Recommendation" />
+          <ScalarProperty Name="OverallComments" ColumnName="OverallComments" />
+          <ScalarProperty Name="OverallRating" ColumnName="OverallRating" />
+          <ScalarProperty Name="CareerPlans" ColumnName="CareerPlans" />
+          <ScalarProperty Name="PlansForFurtherStudies" ColumnName="PlansForFurtherStudies" />
+          <ScalarProperty Name="SignificantAchievements" ColumnName="SignificantAchievements" />
+          <ScalarProperty Name="Smart" ColumnName="Smart" />
+          <ScalarProperty Name="Hungry" ColumnName="Hungry" />
+          <ScalarProperty Name="Humble" ColumnName="Humble" />
+          <ScalarProperty Name="ActWithIntegrity" ColumnName="ActWithIntegrity" />
+          <ScalarProperty Name="StriveForExcellence" ColumnName="StriveForExcellence" />
+          <ScalarProperty Name="ActAsATeam" ColumnName="ActAsATeam" />
+          <ScalarProperty Name="FocusOnCustomer" ColumnName="FocusOnCustomer" />
+          <ScalarProperty Name="ValueTheIndividual" ColumnName="ValueTheIndividual" />
+          <ScalarProperty Name="Driven" ColumnName="Driven" />
+          <ScalarProperty Name="Intelligent" ColumnName="Intelligent" />
+          <ScalarProperty Name="Candid" ColumnName="Candid" />
+          <ScalarProperty Name="Original" ColumnName="Original" />
+          <ScalarProperty Name="Expert" ColumnName="Expert" />
+          <ScalarProperty Name="Creative" ColumnName="Creative" />
+          <ScalarProperty Name="OrganizationalFit" ColumnName="OrganizationalFit" />
+          <ScalarProperty Name="Learnability" ColumnName="Learnability" />
+          <ScalarProperty Name="DecisionMaking" ColumnName="DecisionMaking" />
+          <ScalarProperty Name="StressTolerance" ColumnName="StressTolerance" />
+          <ScalarProperty Name="CommunicationInterpersonalSkills" ColumnName="CommunicationInterpersonalSkills" />
+          <ScalarProperty Name="SelfManagement" ColumnName="SelfManagement" />
+          <ScalarProperty Name="ProfessionalImpression" ColumnName="ProfessionalImpression" />
+          <ScalarProperty Name="PresentationSkills" ColumnName="PresentationSkills" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="HRAssessmentID" ColumnName="HRAssessmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TechnicalAssessments">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.TechnicalAssessment">
+        <MappingFragment StoreEntitySet="TechnicalAssessments">
+          <ScalarProperty Name="AdditionalRating" ColumnName="AdditionalRating" />
+          <ScalarProperty Name="AdditionalRemarks" ColumnName="AdditionalRemarks" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="OverallRating" ColumnName="OverallRating" />
+          <ScalarProperty Name="OverallRemarks" ColumnName="OverallRemarks" />
+          <ScalarProperty Name="EPAMFit" ColumnName="EPAMFit" />
+          <ScalarProperty Name="Section5Remarks" ColumnName="Section5Remarks" />
+          <ScalarProperty Name="Section5Rating" ColumnName="Section5Rating" />
+          <ScalarProperty Name="Section4Remarks" ColumnName="Section4Remarks" />
+          <ScalarProperty Name="Section4Rating" ColumnName="Section4Rating" />
+          <ScalarProperty Name="Section3Remarks" ColumnName="Section3Remarks" />
+          <ScalarProperty Name="Section3Rating" ColumnName="Section3Rating" />
+          <ScalarProperty Name="Section2Remarks" ColumnName="Section2Remarks" />
+          <ScalarProperty Name="Section2Rating" ColumnName="Section2Rating" />
+          <ScalarProperty Name="Section1Remarks" ColumnName="Section1Remarks" />
+          <ScalarProperty Name="Section1Rating" ColumnName="Section1Rating" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="TechnicalAssessmentID" ColumnName="TechnicalAssessmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Delete_Student_GitRepositories" FunctionName="EpamRDPreEducationModel.Store.Delete_Student_GitRepositories" />
+    <FunctionImportMapping FunctionImportName="Generate_GetScriptWithPK" FunctionName="EpamRDPreEducationModel.Store.Generate_GetScriptWithPK" />
+    <FunctionImportMapping FunctionImportName="Generate_UpdateScriptWithPK" FunctionName="EpamRDPreEducationModel.Store.Generate_UpdateScriptWithPK" />
+    <FunctionImportMapping FunctionImportName="Generate_WebinarReportCollegewise" FunctionName="EpamRDPreEducationModel.Store.Generate_WebinarReportCollegewise" />
+    <FunctionImportMapping FunctionImportName="Get_Colleges" FunctionName="EpamRDPreEducationModel.Store.Get_Colleges">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.Get_Colleges_Result">
+          <ScalarProperty Name="CollegeID" ColumnName="CollegeID" />
+          <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+          <ScalarProperty Name="CollegeFacultyEmails" ColumnName="CollegeFacultyEmails" />
+          <ScalarProperty Name="EpamAssociates" ColumnName="EpamAssociates" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GET_Student_GitRepositories" FunctionName="EpamRDPreEducationModel.Store.GET_Student_GitRepositories">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.GET_Student_GitRepositories_Result">
+          <ScalarProperty Name="GitRepositoryID" ColumnName="GitRepositoryID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskDescription" ColumnName="TaskDescription" />
+          <ScalarProperty Name="RepositoryUrl" ColumnName="RepositoryUrl" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_UserDetails_SonarReport" FunctionName="EpamRDPreEducationModel.Store.Get_UserDetails_SonarReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.Get_UserDetails_SonarReport_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EpamAssociates" ColumnName="EpamAssociates" />
+          <ScalarProperty Name="CollegeFacultyEmails" ColumnName="CollegeFacultyEmails" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_UsersOnUserNameAndPassword" FunctionName="EpamRDPreEducationModel.Store.Get_UsersOnUserNameAndPassword">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.Get_UsersOnUserNameAndPassword_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+          <ScalarProperty Name="MarksScored" ColumnName="MarksScored" />
+          <ScalarProperty Name="GraduationSpecialty" ColumnName="GraduationSpecialty" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_WebinarAbsentees" FunctionName="EpamRDPreEducationModel.Store.Get_WebinarAbsentees">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.Get_WebinarAbsentees_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="EmailAddressToSendNotifications" ColumnName="EmailAddressToSendNotifications" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="EpamAssociates" ColumnName="EpamAssociates" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_WebinarAbsenteesCollegewise" FunctionName="EpamRDPreEducationModel.Store.Get_WebinarAbsenteesCollegewise">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.Get_WebinarAbsenteesCollegewise_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="EmailAddressToSendNotifications" ColumnName="EmailAddressToSendNotifications" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="EpamAssociates" ColumnName="EpamAssociates" />
+          <ScalarProperty Name="CollegeFacultyEmails" ColumnName="CollegeFacultyEmails" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_webinarnonattendees" FunctionName="EpamRDPreEducationModel.Store.Get_webinarnonattendees" />
+    <FunctionImportMapping FunctionImportName="RandChars" FunctionName="EpamRDPreEducationModel.Store.RandChars" />
+    <FunctionImportMapping FunctionImportName="Report_WebinarAttendance_Collegewise" FunctionName="EpamRDPreEducationModel.Store.Report_WebinarAttendance_Collegewise" />
+    <FunctionImportMapping FunctionImportName="Report_WebinarAttendance_Studentwise" FunctionName="EpamRDPreEducationModel.Store.Report_WebinarAttendance_Studentwise">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.Report_WebinarAttendance_Studentwise_Result">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+          <ScalarProperty Name="WebinarDate" ColumnName="WebinarDate" />
+          <ScalarProperty Name="WebinarRegistrationDate" ColumnName="WebinarRegistrationDate" />
+          <ScalarProperty Name="AttendedId" ColumnName="AttendedId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="EpamRDPreEducationModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="EpamRDPreEducationModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="EpamRDPreEducationModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="EpamRDPreEducationModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="EpamRDPreEducationModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="EpamRDPreEducationModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EpamRDPreEducationModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="Split" FunctionName="EpamRDPreEducationModel.Store.Split">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.Split_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Update_AttendeeDetails" FunctionName="EpamRDPreEducationModel.Store.Update_AttendeeDetails" />
+    <FunctionImportMapping FunctionImportName="Update_GitRepositories_EmailStatus" FunctionName="EpamRDPreEducationModel.Store.Update_GitRepositories_EmailStatus" />
+    <FunctionImportMapping FunctionImportName="Update_Sonar_Issues" FunctionName="EpamRDPreEducationModel.Store.Update_Sonar_Issues" />
+    <FunctionImportMapping FunctionImportName="Update_Student_GitRepositories" FunctionName="EpamRDPreEducationModel.Store.Update_Student_GitRepositories" />
+    <FunctionImportMapping FunctionImportName="Update_Users" FunctionName="EpamRDPreEducationModel.Store.Update_Users" />
+    <FunctionImportMapping FunctionImportName="Update_Webinar" FunctionName="EpamRDPreEducationModel.Store.Update_Webinar" />
+    <FunctionImportMapping FunctionImportName="Update_Webinar_Registrants" FunctionName="EpamRDPreEducationModel.Store.Update_Webinar_Registrants" />
+    <FunctionImportMapping FunctionImportName="Update_Webinar_Registration" FunctionName="EpamRDPreEducationModel.Store.Update_Webinar_Registration" />
+    <FunctionImportMapping FunctionImportName="ValidateUser" FunctionName="EpamRDPreEducationModel.Store.ValidateUser" />
+    <EntitySetMapping Name="Master_Locations">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Master_Locations">
+        <MappingFragment StoreEntitySet="Master_Locations">
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Master_Roles">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Master_Roles">
+        <MappingFragment StoreEntitySet="Master_Roles">
+          <ScalarProperty Name="RoleKey" ColumnName="RoleKey" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recruitment_Rounds">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Recruitment_Rounds">
+        <MappingFragment StoreEntitySet="Recruitment_Rounds">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RoundKey" ColumnName="RoundKey" />
+          <ScalarProperty Name="RoundName" ColumnName="RoundName" />
+          <ScalarProperty Name="RoundID" ColumnName="RoundID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recruitments">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Recruitment">
+        <MappingFragment StoreEntitySet="Recruitments">
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RecruitmentID" ColumnName="RecruitmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestsHosteds">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.TestsHosted">
+        <MappingFragment StoreEntitySet="TestsHosted">
+          <ScalarProperty Name="HRWeightageOnSelection" ColumnName="HRWeightageOnSelection" />
+          <ScalarProperty Name="TechnicalWeightageOnSelection" ColumnName="TechnicalWeightageOnSelection" />
+          <ScalarProperty Name="CodingWeightageOnSelection1" ColumnName="CodingWeightageOnSelection1" />
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
+          <ScalarProperty Name="CutoffPercentage" ColumnName="CutoffPercentage" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="TestKey" ColumnName="TestKey" />
+          <ScalarProperty Name="TestName" ColumnName="TestName" />
+          <ScalarProperty Name="RecruitmentId" ColumnName="RecruitmentId" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Get_RecruitmentReport" FunctionName="EpamRDPreEducationModel.Store.Get_RecruitmentReport" />
+    <EntitySetMapping Name="Candidate_Marks">
+      <EntityTypeMapping TypeName="EpamRDPreEducationModel.Candidate_Marks">
+        <MappingFragment StoreEntitySet="Candidate_Marks">
+          <ScalarProperty Name="RoundType" ColumnName="RoundType" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="MarksScored" ColumnName="MarksScored" />
+          <ScalarProperty Name="LastEditedDate" ColumnName="LastEditedDate" />
+          <ScalarProperty Name="LastEditedBy" ColumnName="LastEditedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CodingChallenge3" ColumnName="CodingChallenge3" />
+          <ScalarProperty Name="CodingChallenge2" ColumnName="CodingChallenge2" />
+          <ScalarProperty Name="CodingChallenge1" ColumnName="CodingChallenge1" />
+          <ScalarProperty Name="MCQs" ColumnName="MCQs" />
+          <ScalarProperty Name="TestID" ColumnName="TestID" />
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+          <ScalarProperty Name="MarksID" ColumnName="MarksID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Get_Candidate_Details" FunctionName="EpamRDPreEducationModel.Store.Get_Candidate_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.Get_Candidate_Details_Result">
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+          <ScalarProperty Name="RecruitmentId" ColumnName="RecruitmentId" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />
+          <ScalarProperty Name="CandidateLocationID" ColumnName="CandidateLocationID" />
+          <ScalarProperty Name="CandidateEmail" ColumnName="CandidateEmail" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="CandidateResume" ColumnName="CandidateResume" />
+          <ScalarProperty Name="StartedOn" ColumnName="StartedOn" />
+          <ScalarProperty Name="StartingTime" ColumnName="StartingTime" />
+          <ScalarProperty Name="PreviousAssessment" ColumnName="PreviousAssessment" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="MarksScored" ColumnName="MarksScored" />
+          <ScalarProperty Name="FirstRoundCodingMarks" ColumnName="FirstRoundCodingMarks" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Report" ColumnName="Report" />
+          <ScalarProperty Name="PublicReport" ColumnName="PublicReport" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="GraduationCollegeName" ColumnName="GraduationCollegeName" />
+          <ScalarProperty Name="Graduation" ColumnName="Graduation" />
+          <ScalarProperty Name="GraduationSpecialty" ColumnName="GraduationSpecialty" />
+          <ScalarProperty Name="YearOfPassedOut" ColumnName="YearOfPassedOut" />
+          <ScalarProperty Name="GraduationMarksCGPA" ColumnName="GraduationMarksCGPA" />
+          <ScalarProperty Name="C12MarksCGPA" ColumnName="12MarksCGPA" />
+          <ScalarProperty Name="C10MarksCGPA" ColumnName="10MarksCGPA" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="PermanentStateOfResidence" ColumnName="PermanentStateOfResidence" />
+          <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+          <ScalarProperty Name="GovernmentIssuedIDProof" ColumnName="GovernmentIssuedIDProof" />
+          <ScalarProperty Name="PreferredJobLocation" ColumnName="PreferredJobLocation" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Candidate_Details_HREligible" FunctionName="EpamRDPreEducationModel.Store.Get_Candidate_Details_HREligible">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.Get_Candidate_Details_HREligible_Result">
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+          <ScalarProperty Name="RecruitmentId" ColumnName="RecruitmentId" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />
+          <ScalarProperty Name="CandidateLocationID" ColumnName="CandidateLocationID" />
+          <ScalarProperty Name="CandidateEmail" ColumnName="CandidateEmail" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="CandidateResume" ColumnName="CandidateResume" />
+          <ScalarProperty Name="StartedOn" ColumnName="StartedOn" />
+          <ScalarProperty Name="StartingTime" ColumnName="StartingTime" />
+          <ScalarProperty Name="PreviousAssessment" ColumnName="PreviousAssessment" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="MarksScored" ColumnName="MarksScored" />
+          <ScalarProperty Name="FirstRoundCodingMarks" ColumnName="FirstRoundCodingMarks" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Report" ColumnName="Report" />
+          <ScalarProperty Name="PublicReport" ColumnName="PublicReport" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="GraduationCollegeName" ColumnName="GraduationCollegeName" />
+          <ScalarProperty Name="Graduation" ColumnName="Graduation" />
+          <ScalarProperty Name="GraduationSpecialty" ColumnName="GraduationSpecialty" />
+          <ScalarProperty Name="YearOfPassedOut" ColumnName="YearOfPassedOut" />
+          <ScalarProperty Name="GraduationMarksCGPA" ColumnName="GraduationMarksCGPA" />
+          <ScalarProperty Name="C12MarksCGPA" ColumnName="12MarksCGPA" />
+          <ScalarProperty Name="C10MarksCGPA" ColumnName="10MarksCGPA" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="PermanentStateOfResidence" ColumnName="PermanentStateOfResidence" />
+          <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+          <ScalarProperty Name="GovernmentIssuedIDProof" ColumnName="GovernmentIssuedIDProof" />
+          <ScalarProperty Name="PreferredJobLocation" ColumnName="PreferredJobLocation" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Report_RecruitmentSummary" FunctionName="EpamRDPreEducationModel.Store.Report_RecruitmentSummary">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.Report_RecruitmentSummary_Result">
+          <ScalarProperty Name="testname" ColumnName="testname" />
+          <ScalarProperty Name="PassedIn1stRound" ColumnName="PassedIn1stRound" />
+          <ScalarProperty Name="PassedIn2ndRound" ColumnName="PassedIn2ndRound" />
+          <ScalarProperty Name="PassedInTechnical" ColumnName="PassedInTechnical" />
+          <ScalarProperty Name="PassedInHR" ColumnName="PassedInHR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Report_RecruitmentSummary_Genderwise" FunctionName="EpamRDPreEducationModel.Store.Report_RecruitmentSummary_Genderwise">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EpamRDPreEducationModel.Report_RecruitmentSummary_Genderwise_Result">
+          <ScalarProperty Name="testname" ColumnName="testname" />
+          <ScalarProperty Name="PassedIn1stRound" ColumnName="PassedIn1stRound" />
+          <ScalarProperty Name="PassedIn2ndRound" ColumnName="PassedIn2ndRound" />
+          <ScalarProperty Name="PassedInTechnical" ColumnName="PassedInTechnical" />
+          <ScalarProperty Name="PassedInHR" ColumnName="PassedInHR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

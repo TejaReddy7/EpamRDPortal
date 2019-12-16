@@ -1,0 +1,33 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.Models.DashboardModel
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<table style="width:100%" id="myTable" class="datatable table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Test name
+            </th>
+            <th>
+                Second Round - Passed Students
+            </th>
+            <th>
+                Technical - Passed Students
+            </th>
+            <th>HR - Passed Students</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RecruitmentSummaryList())
+        {
+            <tr>
+                <td >@item.TestName</td>
+                @*<td>@item.PassedIn1stRound</td>*@
+                <td class="align-center bold">@item.PassedIn2ndRound</td>
+                <td class="align-center bold">@item.PassedInTechnical</td>
+                <td class="align-center bold">@item.PassedInHR</td>
+            </tr>
+        }
+    </tbody>
+</table>

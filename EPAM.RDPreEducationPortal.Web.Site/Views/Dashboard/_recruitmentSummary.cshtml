@@ -1,0 +1,65 @@
+﻿@model IEnumerable<EPAM.RDPreEducationPortal.Web.Site.Models.DashboardModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<table style="width:100%" id="myTable" class="datatable table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th rowspan="2" class="text-center valign-middle">
+                Test name
+            </th>
+            <th class="text-center">
+                Second Round
+            </th>
+            <th colspan="2" class="text-center">
+                GD
+            </th>
+            <th colspan="2" class="text-center">
+                Technical
+            </th>
+            <th colspan="2" class="text-center">HR</th>
+        </tr>
+        <tr>
+            <th class="text-center">
+                Passed
+            </th>
+            @*<th class="text-center">
+                    Rejected
+                </th>*@
+            <th class="text-center">
+                Passed
+            </th>
+            <th class="text-center">
+                Rejected
+            </th>
+            <th class="text-center">
+                Passed
+            </th>
+            <th class="text-center">
+                Rejected
+            </th>
+            <th class="text-center">
+                Passed
+            </th>
+            <th class="text-center">
+                Rejected
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">@item.TestName</td>
+                <td class="align-center bold">@item.PassedIn2ndRound</td>
+                <td class="align-center bold">@item.PassedInGD</td>
+                <td class="align-center bold">@item.RejectedInGD</td>
+                <td class="align-center bold">@item.PassedInTechnical</td>
+                <td class="align-center bold">@item.RejectedInTechnical</td>
+                <td class="align-center bold">@item.PassedInHR</td>
+                <td class="align-center bold">@item.RejectedInHR</td>
+            </tr>
+        }
+    </tbody>
+</table>

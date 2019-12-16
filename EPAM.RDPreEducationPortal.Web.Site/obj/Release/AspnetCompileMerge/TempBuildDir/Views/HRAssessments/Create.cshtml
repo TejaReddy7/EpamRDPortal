@@ -1,0 +1,965 @@
+﻿@using EPAM.RDPreEducationPortal.Web.Site.EntityFramework
+@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.HRAssessment
+<link href="~/Content/css/tabs.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var db = new EpamRDPreEducationEntities();
+}
+
+@*<h2>EPAM - Candidate Evaluation Form</h2>*@
+@*<hr />*@
+<div class="row">
+    <div class="form-group col-md-2">
+        <div class="card" style="width:220px;">
+            @*<div class="card-body">
+                <p class="mb-0">@db.Candidate_Details.Find(Model.StudentID).CandidateName</p>
+            </div>*@
+            @{
+                var candidateMarks = db.Candidate_Marks.FirstOrDefault(x => x.CandidateID == Model.StudentID && x.TestID == Model.TestId);
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bold">@db.Candidate_Details.Find(Model.StudentID).CandidateName</li>
+                    <li class="list-group-item">Status : Passed @db.Candidate_Marks.Find(2)</li>
+                    <li class="list-group-item bold">Round 2 Marks</li>
+                    <li class="list-group-item">
+                        MCQ's :
+                        <span class="green-color bold">@candidateMarks.MCQs/20</span>
+                    </li>
+                    <li class="list-group-item">
+                        Coding Challenge-1 :
+                        <span class="green-color bold">@candidateMarks.CodingChallenge1/30</span>
+                    </li>
+                    <li class="list-group-item">
+                        Coding Challenge-2 :
+                        <span class="green-color bold">@candidateMarks.CodingChallenge2/50</span>
+                    </li>
+                    <li class="list-group-item bold">
+                        Total :
+                        <span class="green-color bold">@(candidateMarks.MCQs + candidateMarks.CodingChallenge1 + candidateMarks.CodingChallenge2 )/ 100</span>
+                    </li>
+                </ul>
+            }
+        </div>
+        <div class="card" style="width:220px;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item bold">
+                    Rating Scale:
+                </li>
+                <li class="list-group-item" style="color:forestgreen">
+                    5.   Outstanding
+                </li>
+                <li class="list-group-item" style="color:lightseagreen">
+                    4.   Excellent-exceeds requirements
+                </li>
+                <li class="list-group-item" style="color:orange">
+                    3.   Competent—acceptable proficiency
+                </li>
+                <li class="list-group-item" style="color:orangered">
+                    2.   Below Average—Does not meet requirements
+                </li>
+                <li class="list-group-item" style="color:red">
+                    1.   Unable to determine or not applicable to this candidate
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group col-md-10">
+        <div class="row">
+            <div class="">
+                @*board*@
+                <div class="board-inner">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="active">
+                            <a href="#home" data-toggle="tab" title="HR Feedback">
+                                <span class="round-tabs one">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#profile" data-toggle="tab" title="Coding Report">
+                                <span class="round-tabs two">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#messages" data-toggle="tab" title="Resume">
+                                <span class="round-tabs three">
+                                    <i class="glyphicon glyphicon-gift"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#settings" data-toggle="tab" title="Technical Feedback">
+                                <span class="round-tabs four">
+                                    <i class="glyphicon glyphicon-comment"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#doner" data-toggle="tab" title="completed">
+                                <span class="round-tabs five">
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="home">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.StudentID)
+                            @Html.HiddenFor(model => model.TestId)
+                            <h3 class="head text-center">EPAM - HR Candidate Evaluation Form</h3>
+                            if (!string.IsNullOrEmpty(Model.SuccessMessage))
+                            {
+                                <div class="alert alert-success" role="alert">
+                                    <strong>Well done!</strong> @Model.SuccessMessage.
+                                </div>
+                            }
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <label>Presentation Skills<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.PresentationSkills, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.PresentationSkills, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.PresentationSkills, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.PresentationSkills, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.PresentationSkills, 5) 5
+                                        </label>
+                                    </div>
+
+                                    <span id="errDivPresentationSkills" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Presentation Skills
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Professional Impression<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ProfessionalImpression, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ProfessionalImpression, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ProfessionalImpression, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ProfessionalImpression, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ProfessionalImpression, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivProfessionalImpression" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Professional Impression
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Stress Tolerance<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.StressTolerance, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.StressTolerance, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.StressTolerance, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.StressTolerance, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.StressTolerance, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivStressTolerance" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Stress Tolerance
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Decision Making<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.DecisionMaking, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.DecisionMaking, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.DecisionMaking, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.DecisionMaking, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.DecisionMaking, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivDecisionMaking" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Decision Making
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <label>Self Management<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.SelfManagement, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.SelfManagement, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.SelfManagement, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.SelfManagement, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.SelfManagement, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivSelfManagement" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Self Management
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Communication Interpersonal Skills<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.CommunicationInterpersonalSkills, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.CommunicationInterpersonalSkills, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.CommunicationInterpersonalSkills, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.CommunicationInterpersonalSkills, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.CommunicationInterpersonalSkills, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivCommunicationInterpersonalSkills" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Communication Interpersonal Skills
+                                    </span>
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label>Learnability<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Learnability, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Learnability, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Learnability, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Learnability, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Learnability, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivLearnability" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Learnability
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Organizational Fit<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.OrganizationalFit, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.OrganizationalFit, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.OrganizationalFit, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.OrganizationalFit, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.OrganizationalFit, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivOrganizationalFit" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Organizational Fit
+                                    </span>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <h3 class="head text-center">EPAM PERSONALITY on a scale of 5, 5 being the best</h3>
+                                <div class="form-group col-md-3">
+                                    <label>Creative<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Creative, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Creative, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Creative, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Creative, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Creative, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivCreative" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Creative
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Expert<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Expert, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Expert, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Expert, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Expert, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Expert, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivExpert" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Expert
+                                    </span>
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label>Original<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Original, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Original, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Original, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Original, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Original, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivOriginal" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Original
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Candid<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Candid, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Candid, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Candid, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Candid, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Candid, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivCandid" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Candid
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <label>Intelligent<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Intelligent, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Intelligent, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Intelligent, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Intelligent, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Intelligent, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivIntelligent" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Intelligent
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Driven<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Driven, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Driven, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Driven, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Driven, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Driven, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivDriven" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Driven
+                                    </span>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <h3 class="head text-center">EPAM VALUES</h3>
+                                <div class="form-group col-md-3">
+                                    <label>Value The Individual<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ValueTheIndividual, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ValueTheIndividual, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ValueTheIndividual, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ValueTheIndividual, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ValueTheIndividual, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivValueTheIndividual" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Value The Individual
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Focus On Customer<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.FocusOnCustomer, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.FocusOnCustomer, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.FocusOnCustomer, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.FocusOnCustomer, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.FocusOnCustomer, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivFocusOnCustomer" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Focus On Customer
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Act As A Team<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ActAsATeam, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ActAsATeam, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ActAsATeam, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ActAsATeam, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ActAsATeam, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivActAsATeam" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Act As ATeam
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Strive For Excellence<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.StriveForExcellence, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.StriveForExcellence, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.StriveForExcellence, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.StriveForExcellence, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.StriveForExcellence, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivStriveForExcellence" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Strive For Excellence
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <label>Act With Integrity<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ActWithIntegrity, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ActWithIntegrity, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ActWithIntegrity, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ActWithIntegrity, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.ActWithIntegrity, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivActWithIntegrity" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Act With Integrity
+                                    </span>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <label>Humble<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Humble, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Humble, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Humble, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Humble, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Humble, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivHumble" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Humble
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Hungry<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Hungry, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Hungry, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Hungry, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Hungry, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Hungry, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivHungry" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Hungry
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <label>Smart<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Smart, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Smart, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Smart, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Smart, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Smart, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivSmart" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Smart
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label>Significant Achievements<font color="red">*</font></label>
+                                    <textarea id="SignificantAchievements" name="SignificantAchievements" class="form-control"></textarea>
+                                    <span id="errDivSignificantAchievements" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Significant Achievements
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Plans For Further Studies<font color="red">*</font></label>
+                                    <textarea id="PlansForFurtherStudies" name="PlansForFurtherStudies" class="form-control"></textarea>
+                                    <span id="errDivPlansForFurtherStudies" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Plans For Further Studies
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Career Plans<font color="red">*</font></label>
+                                    <textarea id="CareerPlans" name="CareerPlans" class="form-control"></textarea>
+                                    <span id="errDivCareerPlans" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Career Plans
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label>Overall Comments<font color="red">*</font></label>
+                                    <textarea id="OverallComments" name="OverallComments" class="form-control" rows="3"></textarea>
+                                    @*@Html.TextAreaFor(model => model.OverallComments, new { htmlAttributes = new { @class = "form-control", @rows = "3" } })*@
+                                    <span id="errDivOverallComments" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Overall Comments
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Overall Rating<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.OverallRating, 1) 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.OverallRating, 2) 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.OverallRating, 3) 3
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.OverallRating, 4) 4
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.OverallRating, 5) 5
+                                        </label>
+                                    </div>
+                                    <span id="errDivOverallRating" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Overall Rating
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Recommendation<font color="red">*</font></label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="radio-inline" style="margin-left: -19px;">
+                                            @*<input type="checkbox" id="Recommendation" value="true"> Hire*@
+                                            @Html.RadioButtonFor(model => model.Recommendation, true) Hire
+                                        </label>
+                                        <label class="radio-inline">
+                                            @*<input type="checkbox" id="Recommendation" value="false"> Reject*@
+                                            @Html.RadioButtonFor(model => model.Recommendation, false) Reject
+                                        </label>
+
+                                    </div>
+                                    <span id="errDivRecommendation" class="field-validation-valid text-danger display-none" data-valmsg-for="Section1Rating" data-valmsg-replace="true">
+                                        Please enter Recommendation
+                                    </span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                </div>
+                            </div>
+                            <button type="button" id="btnSubmit" class="btn btn-primary">Submit</button>
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="profile">
+                        <h3 class="head text-center">Coding Report</h3>
+                        @{
+                            var publicReport = db.Candidate_Details.FirstOrDefault(x => x.CandidateID == Model.StudentID).PublicReport;
+                            var resume = db.Candidate_Details.FirstOrDefault(x => x.CandidateID == Model.StudentID).CandidateResume;
+                        }
+                        <iframe style="border: 0" src="@publicReport" width="1200" height="800"></iframe>
+                    </div>
+                    <div class="tab-pane fade" id="messages">
+                        <h3 class="head text-center">Resume</h3>
+                        <iframe src="@resume" width="1200" height="800"></iframe>
+                    </div>
+                    <div class="tab-pane fade" id="settings">
+                        <h3 class="head text-center">Previous Technical Feedback</h3>
+                        <p class="narrow text-center">
+                            @Html.Action("DetailsPartialView", "TechnicalAssessments", new { id = Model.StudentID })
+                        </p>
+
+                        <p class="text-center">
+                            <a href="" class="btn btn-success btn-outline-rounded green"> start using bootsnipp <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="doner">
+                        <div class="text-center">
+                            <i class="img-intro icon-checkmark-circle"></i>
+                        </div>
+                        <h3 class="head text-center">thanks for staying tuned! <span style="color:#f48260;">♥</span> Bootstrap</h3>
+                        <p class="narrow text-center">
+                            Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $('a[title]').tooltip();
+    });
+    $("#btnSubmit").click(function () {
+        var valid = true;
+        if ($("input[type='radio'][name='PresentationSkills']:checked").length == 0) {
+            $("#errDivPresentationSkills").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivPresentationSkills").hide();
+        }
+        if ($("input[type='radio'][name='ProfessionalImpression']:checked").length == 0) {
+            $("#errDivProfessionalImpression").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivProfessionalImpression").hide();
+        }
+        if ($("input[type='radio'][name='StressTolerance']:checked").length == 0) {
+            $("#errDivStressTolerance").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivStressTolerance").hide();
+        }
+        if ($("input[type='radio'][name='DecisionMaking']:checked").length == 0) {
+            $("#errDivDecisionMaking").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivDecisionMaking").hide();
+        }
+        if ($("input[type='radio'][name='SelfManagement']:checked").length == 0) {
+            $("#errDivSelfManagement").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivSelfManagement").hide();
+        }
+        if ($("input[type='radio'][name='CommunicationInterpersonalSkills']:checked").length == 0) {
+            $("#errDivCommunicationInterpersonalSkills").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivCommunicationInterpersonalSkills").hide();
+        }
+        if ($("input[type='radio'][name='Learnability']:checked").length == 0) {
+            $("#errDivLearnability").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivLearnability").hide();
+        }
+        if ($("input[type='radio'][name='OrganizationalFit']:checked").length == 0) {
+            $("#errDivOrganizationalFit").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivOrganizationalFit").hide();
+        }
+        if ($("input[type='radio'][name='Creative']:checked").length == 0) {
+            $("#errDivCreative").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivCreative").hide();
+        }
+        if ($("input[type='radio'][name='Expert']:checked").length == 0) {
+            $("#errDivExpert").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivExpert").hide();
+        }
+        if ($("input[type='radio'][name='Original']:checked").length == 0) {
+            $("#errDivOriginal").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivOriginal").hide();
+        }
+        if ($("input[type='radio'][name='Candid']:checked").length == 0) {
+            $("#errDivCandid").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivCandid").hide();
+        }
+        if ($("input[type='radio'][name='Intelligent']:checked").length == 0) {
+            $("#errDivIntelligent").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivIntelligent").hide();
+        }
+        if ($("input[type='radio'][name='Driven']:checked").length == 0) {
+            $("#errDivDriven").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivDriven").hide();
+        }
+        if ($("input[type='radio'][name='ValueTheIndividual']:checked").length == 0) {
+            $("#errDivValueTheIndividual").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivValueTheIndividual").hide();
+        }
+        if ($("input[type='radio'][name='FocusOnCustomer']:checked").length == 0) {
+            $("#errDivFocusOnCustomer").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivFocusOnCustomer").hide();
+        }
+        if ($("input[type='radio'][name='ActAsATeam']:checked").length == 0) {
+            $("#errDivActAsATeam").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivActAsATeam").hide();
+        }
+        if ($("input[type='radio'][name='StriveForExcellence']:checked").length == 0) {
+            $("#errDivStriveForExcellence").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivStriveForExcellence").hide();
+        }
+        if ($("input[type='radio'][name='ActWithIntegrity']:checked").length == 0) {
+            $("#errDivActWithIntegrity").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivActWithIntegrity").hide();
+        }
+        if ($("input[type='radio'][name='Humble']:checked").length == 0) {
+            $("#errDivHumble").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivHumble").hide();
+        }
+        if ($("input[type='radio'][name='Hungry']:checked").length == 0) {
+            $("#errDivHungry").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivHungry").hide();
+        }
+        if ($("input[type='radio'][name='Smart']:checked").length == 0) {
+            $("#errDivSmart").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivSmart").hide();
+        }
+        if ($("#SignificantAchievements").val().length == 0) {
+            $("#errDivSignificantAchievements").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivSignificantAchievements").hide();
+        }
+        if ($("#PlansForFurtherStudies").val().length == 0) {
+            $("#errDivPlansForFurtherStudies").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivPlansForFurtherStudies").hide();
+        }
+        if ($("#CareerPlans").val().length == 0) {
+            $("#errDivCareerPlans").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivCareerPlans").hide();
+        }
+        if ($("#OverallComments").val().length == 0) {
+            $("#errDivOverallComments").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivOverallComments").hide();
+        }
+        if ($("input[type='radio'][name='OverallRating']:checked").length == 0) {
+            $("#errDivOverallRating").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivOverallRating").hide();
+        }
+        if ($("input[type='radio'][name='Recommendation']:checked").length == 0) {
+            $("#errDivRecommendation").slideDown('slow');
+            valid = false;
+        } else {
+            $("#errDivRecommendation").hide();
+        }
+        //if ($("#OverallRemarks").val().length == 0) {
+        //    $("#errDivOverallRemarks").slideDown('slow');
+        //    valid = false;
+        //} else {
+        //    $("#errDivOverallRemarks").hide();
+        //}
+        if (valid == true)
+            $('form').submit();
+
+        return false;
+    });
+</script>
+@*<style>
+        .container {
+            margin: 10px !important;
+        }
+    </style>*@

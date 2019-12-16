@@ -1,0 +1,37 @@
+﻿@model IEnumerable<EPAM.RDPreEducationPortal.Web.Site.Models.DashboardModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    var count = 0;
+}
+<table style="width:100%" id="myTable" class="datatable table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center valign-middle">
+                College Name
+            </th>
+            <th class="text-center valign-middle">
+                Count
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            count = count + item.Count;
+            <tr>
+                <td>@item.CollegeName</td>
+                <td class="align-center bold">
+                    @item.Count
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total</td>
+            <td class="align-center bold">@count</td>
+        </tr>
+    </tfoot>
+</table>

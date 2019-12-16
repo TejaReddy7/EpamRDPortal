@@ -1,0 +1,123 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.TestsHosted
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TestsHosted</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TestId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CutoffPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CutoffPercentage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WeightageOnSelection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WeightageOnSelection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodingWeightageOnSelection1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodingWeightageOnSelection1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TechnicalWeightageOnSelection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TechnicalWeightageOnSelection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HRWeightageOnSelection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HRWeightageOnSelection)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RecruitmentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

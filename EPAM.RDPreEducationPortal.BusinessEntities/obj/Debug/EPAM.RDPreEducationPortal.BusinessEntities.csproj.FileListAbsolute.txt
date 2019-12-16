@@ -1,0 +1,5 @@
+D:\Raja Sekhar\RD Lab\RD Projects\PreEducationPortal\EPAM.RDPreEducationPortal.BusinessEntities\bin\Debug\EPAM.RDPreEducationPortal.BusinessEntities.dll
+D:\Raja Sekhar\RD Lab\RD Projects\PreEducationPortal\EPAM.RDPreEducationPortal.BusinessEntities\bin\Debug\EPAM.RDPreEducationPortal.BusinessEntities.pdb
+D:\Raja Sekhar\RD Lab\RD Projects\PreEducationPortal\EPAM.RDPreEducationPortal.BusinessEntities\obj\Debug\EPAM.RDPreEducationPortal.BusinessEntities.csproj.CoreCompileInputs.cache
+D:\Raja Sekhar\RD Lab\RD Projects\PreEducationPortal\EPAM.RDPreEducationPortal.BusinessEntities\obj\Debug\EPAM.RDPreEducationPortal.BusinessEntities.dll
+D:\Raja Sekhar\RD Lab\RD Projects\PreEducationPortal\EPAM.RDPreEducationPortal.BusinessEntities\obj\Debug\EPAM.RDPreEducationPortal.BusinessEntities.pdb

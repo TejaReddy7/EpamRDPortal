@@ -1,0 +1,95 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.TestsHosted
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Tests Hosted</h2>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label for="RecruitmentId">Recruitment</label>
+                @Html.DropDownListFor(model => model.RecruitmentId, new SelectList(Enumerable.Empty<SelectListItem>(), "RecruitmentId", "RecruitmentName"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RecruitmentId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="TestName">Test Name</label>
+                @Html.EditorFor(model => model.TestName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TestName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="LocationId">Location</label>
+                @Html.DropDownListFor(model => model.LocationId, new SelectList(Enumerable.Empty<SelectListItem>(), "LocationId", "Location"), new { @class = "form-control" })
+                @*@Html.ValidationMessageFor(model => model.LocationId, "", new { @class = "text-danger" })*@
+            </div>
+            <div class="form-group col-md-3">
+                <label for="CutoffPercentage">Cutoff Percentage</label>
+                @Html.EditorFor(model => model.CutoffPercentage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CutoffPercentage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-3">
+                @Html.LabelFor(model => model.CodingWeightageOnSelection1)
+                @Html.EditorFor(model => model.CodingWeightageOnSelection1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CodingWeightageOnSelection1, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                @Html.LabelFor(model => model.TechnicalWeightageOnSelection)
+                @Html.EditorFor(model => model.TechnicalWeightageOnSelection, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TechnicalWeightageOnSelection, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                @Html.LabelFor(model => model.HRWeightageOnSelection)
+                @Html.EditorFor(model => model.HRWeightageOnSelection, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HRWeightageOnSelection, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3"></div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-success" />
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON("/Recruitments/List",
+            function (classesData) {
+                var select = $("#RecruitmentId");
+                select.empty();
+                select.append($('<option/>', {
+                    value: 0,
+                    text: "Select a Recruitments"
+                }));
+                $.each(classesData, function (index, itemData) {
+                    select.append($('<option/>', {
+                        value: itemData.RecruitmentID,
+                        text: itemData.Name
+                    }));
+                });
+            });
+        $.getJSON("/Locations/List",
+            function (classesData) {
+                var select = $("#LocationId");
+                select.empty();
+                select.append($('<option/>', {
+                    value: 0,
+                    text: "Select a Recruitments"
+                }));
+                $.each(classesData, function (index, itemData) {
+                    select.append($('<option/>', {
+                        value: itemData.LocationID,
+                        text: itemData.Location
+                    }));
+                });
+            });
+    });
+</script>

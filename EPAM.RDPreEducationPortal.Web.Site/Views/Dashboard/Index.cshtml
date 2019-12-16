@@ -1,0 +1,297 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+<div class="container">
+    <div class="col-md-12">
+        <div class="form-group col-md-2">
+            <label for="RecruitmentId">Recruitment</label>
+        </div>
+        <div class="form-group col-md-4">
+            @Html.DropDownList("RecruitmentId", new SelectList(Enumerable.Empty<SelectListItem>(), "RecruitmentId", "RecruitmentName"), new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-2">
+            <label for="TestId">Location</label>
+        </div>
+        <div class="form-group col-md-4">
+            @Html.DropDownList("LocationId", new SelectList(Enumerable.Empty<SelectListItem>(), "TestId", "TestName"), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Recruitment Summary</div>
+            <div id="divRecruitmentSummary">
+                @*@Html.Action("RecruitmentSummary", "Dashboard")*@
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-group col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Technical Feedback</div>
+                <div id="divTechnicalInterviwesPanelwise"> </div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">HR Feedback</div>
+                <div id="divHRnterviwesPanelwise"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-group col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Recruitment Summary College Wise</div>
+                <div id="divRecruitmentSummaryCollegeWise"> </div>
+            </div>
+        </div>
+        @*<div class="form-group col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">HR Feedback</div>
+                    <div id="divHRnterviwesPanelwise"> </div>
+                </div>
+            </div>*@
+    </div>
+    <div class="form-group">
+        <div class="form-group col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Technical Feedback</div>
+                <canvas id="myChart" width="200" height="100"></canvas>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">HR Feedback</div>
+                <canvas id="hRFeedbackChart" width="200" height="100"></canvas>
+            </div>
+        </div>
+    </div>
+    @*<div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Gender wise Result</div>
+                <div id="divGenderwise">
+                </div>
+            </div>
+        </div>*@
+    <button type="button" id="demo">Submit</button>
+
+</div>
+@*<div id="map_canvas" style="width:500px;height:500px"></div>*@
+<style>
+    #map_canvas img {
+        
+    }
+</style>
+<style>
+    .infoDiv {
+        height: 200px;
+        width: 300px;
+        -webkit-user-select: none;
+        background-color: white;
+    }
+</style>
+<script type="text/javascript">
+    //var Liverpool = new google.maps.LatLng(53.408841, -2.981397);  
+    //var mapOptions = {
+    //    zoom: 14,
+    //    center: Liverpool,
+    //    mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+    //};
+    //var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    //var myLatlng = new google.maps.LatLng(53.40091, -2.994464);
+    //var marker = new google.maps.Marker({
+    //    position: myLatlng,
+    //    map: map,
+    //    title: 'Tate Gallery'
+    //});
+
+    $.getJSON("/Recruitments/List",
+        function (classesData) {
+            var select = $("#RecruitmentId");
+            select.empty();
+            select.append($('<option/>', {
+                value: 0,
+                text: "Select a Recruitments"
+            }));
+            $.each(classesData, function (index, itemData) {
+                select.append($('<option/>', {
+                    value: itemData.RecruitmentID,
+                    text: itemData.Name
+                }));
+            });
+            $("#RecruitmentId").val(1).trigger("change");
+
+            $.getJSON("/TestsHosted/List?RecruitmentId=1",
+                function (classesData) {
+                    var select = $("#LocationId");
+                    select.empty();
+                    select.append($('<option/>', {
+                        value: 0,
+                        text: "Select a Location"
+                    }));
+                    $.each(classesData, function (index, itemData) {
+                        select.append($('<option/>', {
+                            value: itemData.TestId,
+                            text: itemData.TestName
+                        }));
+                    });
+                    $("#LocationId").val(3).trigger("change");
+                });
+        });
+
+    $("#RecruitmentId").change(function () {
+        $.getJSON("/TestsHosted/List?RecruitmentId=" + $(this).val(),
+            function (classesData) {
+                var select = $("#LocationId");
+                select.empty();
+                select.append($('<option/>', {
+                    value: 0,
+                    text: "Select a Location"
+                }));
+                $.each(classesData, function (index, itemData) {
+                    select.append($('<option/>', {
+                        value: itemData.TestId,
+                        text: itemData.TestName
+                    }));
+                });
+            });
+        $.ajax({
+            type: "GET",
+            url: "/Dashboard/RecruitmentSummary?recruitmentId=" + $("#RecruitmentId").val(),
+            success: function (data) {
+                $("#divRecruitmentSummary").html(data);
+            }
+        });
+        $.ajax({
+            type: "GET",
+            url: "/Dashboard/GenderwiseSummary?recruitmentId=" + $("#RecruitmentId").val(),
+            success: function (data) {
+                $("#divGenderwise").html(data);
+            }
+        });
+        $.ajax({
+            type: "GET",
+            url: "/Dashboard/InterviewPanelwiseSummary?recruitmentId=" + $("#RecruitmentId").val() + "&role=TechnicalInterviewer",
+            success: function (data) {
+                $("#divTechnicalInterviwesPanelwise").html(data);
+            }
+        });
+        $.ajax({
+            type: "GET",
+            url: "/Dashboard/InterviewPanelwiseSummary?recruitmentId=" + $("#RecruitmentId").val() + "&role=HR",
+            success: function (data) {
+                $("#divHRnterviwesPanelwise").html(data);
+            }
+        });
+        $.ajax({
+            type: "GET",
+            url: "/Dashboard/RecruitmentSummaryCollegeWise?recruitmentId=" + $("#RecruitmentId").val(),
+            success: function (data) {
+                $("#divRecruitmentSummaryCollegeWise").html(data);
+            }
+        });
+        $("#LocationId").val(0).trigger("change");
+    });
+    $("#LocationId").change(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Report/Recruitment?TestId=" + $("#LocationId").val(),
+            cache: false,
+            success: function (data) {
+                var technicalSelected = 0;
+                var technicalRejected = 0;
+                var technicalNeedMoreEvaluation = 0;
+                var HRSelected = 0;
+                var HRRejected = 0;
+                $.each(data, function (i, item) {
+                    if (item.Category == "Technical") {
+                        technicalSelected = item.Selected;
+                        technicalRejected = item.Rejected;
+                        technicalNeedMoreEvaluation = item.NeedMoreEvaluation;
+                    }
+                    if (item.Category == "HR") {
+                        HRSelected = item.Selected;
+                        HRRejected = item.Rejected;
+                    }
+                });
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myChart = new Chart(ctx,
+                    {
+                        type: 'bar',
+                        data: {
+                            labels: ['Selected', 'Rejected', 'Need More Evaluation'],
+                            datasets: [
+                                {
+                                    label: '# of Students',
+                                    data: [technicalSelected, technicalRejected, technicalNeedMoreEvaluation],
+                                    backgroundColor: [
+                                        '#008000',
+                                        '#FF0000',
+                                        '#FFA500'
+                                    ],
+                                    borderColor: [
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [
+                                    {
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    });
+                var ctxHR = document.getElementById('hRFeedbackChart').getContext('2d');
+                var myChart = new Chart(ctxHR,
+                    {
+                        type: 'bar',
+                        data: {
+                            labels: ['Selected', 'Rejected'],
+                            datasets: [
+                                {
+                                    label: '# of Students',
+                                    data: [HRSelected, HRRejected],
+                                    backgroundColor: [
+                                        '#008000',
+                                        '#FF0000'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [
+                                    {
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    });
+            },
+            error: function (data) {
+
+            }
+        });
+    });
+
+</script>

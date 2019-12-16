@@ -1,0 +1,37 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: #fff;
+}
+@media only screen and (min-width: 1240px) {
+    .logo-container .logo--epam:hover {
+        filter: brightness(0) saturate(100%) invert(87%) sepia(100%) saturate(1499%) hue-rotate(172deg) brightness(108%) contrast(102%);
+    }
+}
+
+.logo-container .logo--training-center {
+    display: block;
+    background: url(/Content/themes/Redesign/ico/training-center-logo-header.svg) no-repeat;
+    background-size: contain;
+    height: 32px;
+    width: 100px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select {
+    max-width: 280px;
+}

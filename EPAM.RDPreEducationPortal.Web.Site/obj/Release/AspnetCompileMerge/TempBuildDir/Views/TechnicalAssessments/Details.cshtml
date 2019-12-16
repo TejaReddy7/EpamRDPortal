@@ -1,0 +1,101 @@
+﻿@using EPAM.RDPreEducationPortal.Web.Site.EntityFramework
+@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.TechnicalAssessment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var db = new EpamRDPreEducationEntities();
+}
+
+<h2>Technical Feedback</h2>
+
+<div>
+    <h4>Technical Assessment</h4>
+    <hr />
+    @foreach (var item in db.TechnicalAssessments.Where(x => x.StudentID == Model.StudentID).ToList())
+    {
+        <table class="table table-bordered valign-middle">
+            <tr>
+                <th class="text-center" style="width:300px"> Candidate Name </th>
+                <td>@db.Candidate_Details.Find(Model.StudentID).CandidateName</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px"> Candidate Email </th>
+                <td>@db.Candidate_Details.Find(Model.StudentID).CandidateEmail</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">EPAM FIT</th>
+                <td class="bg-primary">
+                    @if (item.EPAMFit == 1)
+                    {
+                        <lable>Yes</lable>
+                    }
+                    else if (item.EPAMFit == 2)
+                    {
+                        <lable>No</lable>
+                    }
+                    else if (item.EPAMFit == 3)
+                    {
+                        <lable>Need More Evaluation</lable>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">  Section1 Rating </th>
+                <td>@item.Section1Rating</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">  Section1 Remarks </th>
+                <td>@item.Section1Remarks</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">  Section2 Rating </th>
+                <td>@item.Section2Rating</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">  Section2 Remarks </th>
+                <td>@item.Section2Remarks</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">  Section3 Rating </th>
+                <td>@item.Section3Rating</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">  Section3 Remarks </th>
+                <td>@item.Section3Remarks</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">  Section4 Rating </th>
+                <td>@item.Section4Rating</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">  Section4 Remarks </th>
+                <td>@item.Section4Remarks</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">  Section5 Rating </th>
+                <td>@item.Section5Rating</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">  Section5 Remarks </th>
+                <td>@item.Section5Remarks</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">  Overall Rating </th>
+                <td>@item.OverallRating</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">  Overall Remarks </th>
+                <td>@item.OverallRemarks</td>
+            </tr>
+            <tr>
+                <th class="text-center" style="width:300px">Interviewer</th>
+                <td>@item.CreatedBy</td>
+            </tr>
+        </table>
+    }
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TechnicalAssessmentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,97 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApplications", "WebApplications", "{DDDC56D1-CB91-4991-B9C6-2D9B90EFD363}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{112885F3-B7BE-42B9-8B6C-273ED2D512F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTesting", "UnitTesting", "{DDCE26E2-7135-4BEE-A9C3-6A04B2A1A608}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{53110A18-3986-4FAE-8CD3-C1EE9B66ABC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM.RDPreEducationPortal.BusinessEntities", "EPAM.RDPreEducationPortal.BusinessEntities\EPAM.RDPreEducationPortal.BusinessEntities.csproj", "{1139679A-51E6-46B1-91A2-59ACB6AD8A5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM.RDPreEducationPortal.Web.Site", "EPAM.RDPreEducationPortal.Web.Site\EPAM.RDPreEducationPortal.Web.Site.csproj", "{D5EB751F-FF24-44BE-9C28-A1AD16174C78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM.RDPreEducationPortal.Web.Site.Tests", "EPAM.RDPreEducationPortal.Web.Site.Tests\EPAM.RDPreEducationPortal.Web.Site.Tests.csproj", "{1F8EA7DA-0283-4CE1-9FBC-CB145BEE6B4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{923E8FA0-633E-45FF-9998-C2BA55B0775B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM.RDPreEducationPortal.Utilities", "EPAM.RDPreEducationPortal.Utilities\EPAM.RDPreEducationPortal.Utilities.csproj", "{26578104-BE71-459F-A552-3088C30FDD73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM.RDPreEducationPortal.CoreModels", "Epam.RDPreEducationPortal.CoreModels\EPAM.RDPreEducationPortal.CoreModels.csproj", "{84E57431-71B8-4AB3-AA0C-EC497D4B8D62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM.RDPreEducationPortal.DataAccess", "EPAM.RDPreEducationPortal.DataAccess\EPAM.RDPreEducationPortal.DataAccess.csproj", "{A07A08D0-2E31-44C4-9507-254BB2EF0E5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM.RDPreEducationPortal.Web.Services", "EPAM.RDPreEducationPortal.Web.Services\EPAM.RDPreEducationPortal.Web.Services.csproj", "{6DBA7EE2-C4A2-40FD-A034-0E5CDE8A6568}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM.RDPreEducationPortal.Web.Services.Tests", "EPAM.RDPreEducationPortal.Web.Services.Tests\EPAM.RDPreEducationPortal.Web.Services.Tests.csproj", "{F50C1A61-7464-429C-8040-C255A16C4EE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM.RDPreEducationPortal.Windows.Services", "EPAM.RDPreEducationPortal.Windows.Services\EPAM.RDPreEducationPortal.Windows.Services.csproj", "{596D4D82-1D84-4CD9-90A2-00A1BBD915D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1139679A-51E6-46B1-91A2-59ACB6AD8A5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1139679A-51E6-46B1-91A2-59ACB6AD8A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1139679A-51E6-46B1-91A2-59ACB6AD8A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1139679A-51E6-46B1-91A2-59ACB6AD8A5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5EB751F-FF24-44BE-9C28-A1AD16174C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5EB751F-FF24-44BE-9C28-A1AD16174C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5EB751F-FF24-44BE-9C28-A1AD16174C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5EB751F-FF24-44BE-9C28-A1AD16174C78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F8EA7DA-0283-4CE1-9FBC-CB145BEE6B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F8EA7DA-0283-4CE1-9FBC-CB145BEE6B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F8EA7DA-0283-4CE1-9FBC-CB145BEE6B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F8EA7DA-0283-4CE1-9FBC-CB145BEE6B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26578104-BE71-459F-A552-3088C30FDD73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26578104-BE71-459F-A552-3088C30FDD73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26578104-BE71-459F-A552-3088C30FDD73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26578104-BE71-459F-A552-3088C30FDD73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84E57431-71B8-4AB3-AA0C-EC497D4B8D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84E57431-71B8-4AB3-AA0C-EC497D4B8D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84E57431-71B8-4AB3-AA0C-EC497D4B8D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84E57431-71B8-4AB3-AA0C-EC497D4B8D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A07A08D0-2E31-44C4-9507-254BB2EF0E5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A07A08D0-2E31-44C4-9507-254BB2EF0E5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A07A08D0-2E31-44C4-9507-254BB2EF0E5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A07A08D0-2E31-44C4-9507-254BB2EF0E5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DBA7EE2-C4A2-40FD-A034-0E5CDE8A6568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DBA7EE2-C4A2-40FD-A034-0E5CDE8A6568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DBA7EE2-C4A2-40FD-A034-0E5CDE8A6568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DBA7EE2-C4A2-40FD-A034-0E5CDE8A6568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F50C1A61-7464-429C-8040-C255A16C4EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50C1A61-7464-429C-8040-C255A16C4EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50C1A61-7464-429C-8040-C255A16C4EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50C1A61-7464-429C-8040-C255A16C4EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{596D4D82-1D84-4CD9-90A2-00A1BBD915D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{596D4D82-1D84-4CD9-90A2-00A1BBD915D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{596D4D82-1D84-4CD9-90A2-00A1BBD915D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{596D4D82-1D84-4CD9-90A2-00A1BBD915D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1139679A-51E6-46B1-91A2-59ACB6AD8A5E} = {112885F3-B7BE-42B9-8B6C-273ED2D512F7}
+		{D5EB751F-FF24-44BE-9C28-A1AD16174C78} = {DDDC56D1-CB91-4991-B9C6-2D9B90EFD363}
+		{1F8EA7DA-0283-4CE1-9FBC-CB145BEE6B4B} = {DDCE26E2-7135-4BEE-A9C3-6A04B2A1A608}
+		{26578104-BE71-459F-A552-3088C30FDD73} = {923E8FA0-633E-45FF-9998-C2BA55B0775B}
+		{84E57431-71B8-4AB3-AA0C-EC497D4B8D62} = {112885F3-B7BE-42B9-8B6C-273ED2D512F7}
+		{A07A08D0-2E31-44C4-9507-254BB2EF0E5D} = {112885F3-B7BE-42B9-8B6C-273ED2D512F7}
+		{6DBA7EE2-C4A2-40FD-A034-0E5CDE8A6568} = {53110A18-3986-4FAE-8CD3-C1EE9B66ABC9}
+		{F50C1A61-7464-429C-8040-C255A16C4EE7} = {DDCE26E2-7135-4BEE-A9C3-6A04B2A1A608}
+		{596D4D82-1D84-4CD9-90A2-00A1BBD915D1} = {53110A18-3986-4FAE-8CD3-C1EE9B66ABC9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A287B286-7EC0-4745-B971-2230C1EFB8A8}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal

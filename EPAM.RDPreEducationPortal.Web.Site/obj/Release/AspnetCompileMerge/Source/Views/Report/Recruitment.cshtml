@@ -1,0 +1,196 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.Candidate_Details
+
+@{
+    ViewBag.Title = "Recruitment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+<div class="container">
+    <h2>Recruitment Report</h2>
+
+    @using (Html.BeginForm("UploadCandidates", "CandidateDetails", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-horizontal">
+            <div class="row">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="form-group col-md-4">
+                        @Html.LabelFor(model => model.RecruitmentId)
+                        @Html.DropDownListFor(model => model.RecruitmentId, new SelectList(Enumerable.Empty<SelectListItem>(), "RecruitmentId", "Name"), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RecruitmentId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.LabelFor(model => model.TestId)
+                        @Html.DropDownListFor(model => model.TestId, new SelectList(Enumerable.Empty<SelectListItem>(), "TestId", "TestName"), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TestId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <input type="button" id="btnReport" value="Submit" class="btn btn-success" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Technical Feedback</div>
+                            <canvas id="myChart" width="200" height="100"></canvas>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">HR Feedback</div>
+                            <canvas id="hRFeedbackChart" width="200" height="100"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div> 
+        </div>
+    }
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON("/Recruitments/List",
+            function (classesData) {
+                var select = $("#RecruitmentId");
+                select.empty();
+                select.append($('<option/>', {
+                    value: 0,
+                    text: "Select a Recruitments"
+                }));
+                $.each(classesData, function (index, itemData) {
+                    select.append($('<option/>', {
+                        value: itemData.RecruitmentID,
+                        text: itemData.Name
+                    }));
+                });
+            });
+        $.getJSON("/TestsHosted/List",
+            function (classesData) {
+                var select = $("#TestId");
+                select.empty();
+                select.append($('<option/>', {
+                    value: 0,
+                    text: "Select a Tests"
+                }));
+                $.each(classesData, function (index, itemData) {
+                    select.append($('<option/>', {
+                        value: itemData.TestId,
+                        text: itemData.TestName
+                    }));
+                });
+            });
+    });
+    $("#btnExportReport").click(function () {
+        window.location = '/Report/RecruitmentExcelExport';
+        //$.ajax({
+        //    type: "POST",
+        //    url: "/Report/RecruitmentExcelExport",
+        //    cache: false,
+        //    success: function (data) {
+        //        //window.location = '/Excel/Download';
+        //    },
+        //    error: function (data) {
+
+        //    }
+        //});
+    });
+    $("#btnReport").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Report/Recruitment?TestId=" + $("#TestId").val(),
+            cache: false,
+            success: function (data) {
+                var technicalSelected = 0;
+                var technicalRejected = 0;
+                var technicalNeedMoreEvaluation = 0;
+                var HRSelected = 0;
+                var HRRejected = 0;
+                $.each(data, function (i, item) {
+                    if (item.Category == "Technical") {
+                        technicalSelected = item.Selected;
+                        technicalRejected = item.Rejected;
+                        technicalNeedMoreEvaluation = item.NeedMoreEvaluation;
+                    }
+                    if (item.Category == "HR") {
+                        HRSelected = item.Selected;
+                        HRRejected = item.Rejected;
+                    }
+                });
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myChart = new Chart(ctx,
+                    {
+                        type: 'bar',
+                        data: {
+                            labels: ['Selected', 'Rejected','Need More Evaluation'],
+                            datasets: [
+                                {
+                                    label: '# of Students',
+                                    data: [technicalSelected, technicalRejected, technicalNeedMoreEvaluation],
+                                    backgroundColor: [
+                                        '#008000',
+                                        '#FF0000',
+                                        '#FFA500'
+                                    ],
+                                    borderColor: [
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [
+                                    {
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    });
+                var ctxHR = document.getElementById('hRFeedbackChart').getContext('2d');
+                var myChart = new Chart(ctxHR,
+                    {
+                        type: 'bar',
+                        data: {
+                            labels: ['Selected', 'Rejected'],
+                            datasets: [
+                                {
+                                    label: '# of Students',
+                                    data: [HRSelected, HRRejected],
+                                    backgroundColor: [
+                                        '#008000',
+                                        '#FF0000'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [
+                                    {
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    });
+            },
+            error: function (data) {
+
+            }
+        });
+    });
+</script>

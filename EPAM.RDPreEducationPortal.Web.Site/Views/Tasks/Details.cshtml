@@ -1,0 +1,75 @@
+﻿@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.Task
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Task</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastEditedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastEditedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedCompletionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedCompletionDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TaskId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

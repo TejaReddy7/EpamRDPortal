@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EPAM.RDPreEducationPortal.Web.Site.Models.ReportModel>
+@{
+    Layout = null;
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ <table style="width:100%" id="myTable" class="datatable table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center valign-middle">
+                Student Name
+            </th>
+            <th class="text-center">
+                Email Address
+            </th>
+            <th class="text-center">
+                Graduation College Name
+            </th>
+            <th class="text-center">
+                Test Name
+            </th>
+            <th class="text-center">
+                Total Weightage
+            </th>
+            <th class="text-center">
+                Selection Status
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">@item.CandidateName</td>
+                <td class="align-center bold">@item.EmailAddress</td>
+                <td class="align-center bold">@item.GraduationCollegeName</td>
+                <td class="align-center bold">@item.TestName</td>
+                <td class="align-center bold">@item.TotalWeightage</td>
+                <td class="align-center bold">@item.SelectionStatus</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+    //$(document).ready(function () {
+    //    $('#myTable').dataTable();
+    //});
+</script>

@@ -1,0 +1,63 @@
+﻿/*.panel-info{
+    width:380px;
+}*/
+
+.background-img {
+    background-image: url('Images/startbanner-desktop.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+}
+
+
+.input-group {
+    margin-left: 115px
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.panel-info > .panel-heading {
+    color: #7d7d7d;
+    background-color: #464547;
+    border-color: #bce8f1;
+}
+
+.panel-title {
+    color: #fffcf3;
+}
+
+.login-page {
+    margin-top: 10%;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 1500px) {
+    .back-video {
+        display: none;
+    }
+
+    .background-img {
+        background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+        font-family: 'Numans', sans-serif;
+    }
+}

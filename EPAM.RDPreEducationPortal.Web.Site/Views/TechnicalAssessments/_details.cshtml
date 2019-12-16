@@ -1,0 +1,113 @@
+﻿@using EPAM.RDPreEducationPortal.Web.Site.EntityFramework
+@model EPAM.RDPreEducationPortal.Web.Site.EntityFramework.TechnicalAssessment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+    var db = new EpamRDPreEducationEntities();
+}
+
+<h2>Technical Feedback</h2>
+<div>
+    <hr />
+    @foreach (var item in db.TechnicalAssessments.Where(x => x.StudentID == Model.StudentID).ToList())
+    {
+    <table class="table table-bordered valign-middle">
+        <tr>
+            <th class="text-center" style="width:300px"> Candidate Name </th>
+            <td>@db.Candidate_Details.Find(Model.StudentID).CandidateName</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px"> Candidate Email </th>
+            <td>@db.Candidate_Details.Find(Model.StudentID).CandidateEmail</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">EPAM FIT</th>
+            <td class="bg-primary">
+                @if (item.EPAMFit == 1)
+                {
+                    <lable>Yes</lable>
+                }
+                else if (item.EPAMFit == 2)
+                {
+                    <lable>No</lable>
+                }
+                else if (item.EPAMFit == 3)
+                {
+                    <lable>Need More Evaluation</lable>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Section1  <span style="font-weight:100;font-style:italic">Classes /  Objects / Constructors</span> </th>
+            <td>
+                @item.Section1Rating
+            </td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Section1 Remarks </th>
+            <td>@item.Section1Remarks</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Section2  <span style="font-weight:100;font-style:italic">Data types: primitive vs reference</span> </th>
+            <td>@item.Section2Rating</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Section2 Remarks </th>
+            <td>@item.Section2Remarks</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Section3  <span style="font-weight:100;font-style:italic">Inheritance / Abstraction / Polymorphism</span>  </th>
+            <td>@item.Section3Rating</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Section3 Remarks </th>
+            <td>@item.Section3Remarks</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Section4 <span style="font-weight:100;font-style:italic">Data Structures/Algorithms/Graph Theory </span>  </th>
+            <td>@item.Section4Rating</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Section4 Remarks </th>
+            <td>@item.Section4Remarks</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Section5 <span style="font-weight:100;font-style:italic">Coding task questions (was student able to explain his code.) </span> </th>
+            <td>@item.Section5Rating</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Section5 Remarks </th>
+            <td>@item.Section5Remarks</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Overall Rating  <span style="font-weight:100;font-style:italic">Recommendation for this student (1 - 2 minutes for this section)  </span></th>
+            <td>@item.OverallRating</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Overall Remarks </th>
+            <td>@item.OverallRemarks</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px"> Rating on Additional Questions <span style="font-weight:100;font-style:italic">Enter the questions you have asked, if any, apart from the above mentioned questions and provide relevant remarks. </span></th>
+            <td>@item.AdditionalRating</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Additional Questions Remarks </th>
+            <td>@item.AdditionalRemarks</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">  Highly Recommended </th>
+            <td>@item.HighlyRecommended</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">Interviewer</th>
+            <td>@item.CreatedBy</td>
+        </tr>
+        <tr>
+            <th class="text-center" style="width:300px">Date</th>
+            <td>@item.CreatedDate</td>
+        </tr>
+    </table>
+    }
+</div> 

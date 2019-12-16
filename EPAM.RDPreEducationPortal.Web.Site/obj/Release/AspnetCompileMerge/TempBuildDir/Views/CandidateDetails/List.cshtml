@@ -1,0 +1,101 @@
+﻿@using EPAM.RDPreEducationPortal.Web.Site.Common
+@model IEnumerable<EPAM.RDPreEducationPortal.Web.Site.EntityFramework.Candidate_Details>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<h2>Candidate Details</h2>
+<table style="width:100%" id="myTable" class="datatable table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateName)
+            </th>
+            <th>
+                First Round Score
+            </th>
+            <th>
+                Second Round Score
+            </th>
+            <th>
+                Previous Assessment
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>Feedback</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CandidateName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstRoundCodingMarks)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MarksScored)
+                </td>
+                <td>
+                    @if (item.PreviousAssessment != "Not Qulified")
+                    {
+                        @Html.Raw(item.PreviousAssessment)
+                    }
+                    else
+                    {
+                        <span style="color:red">@item.PreviousAssessment </span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @if (item.PreviousAssessment != "Not Qulified")
+                    {
+                        if (UserDetailsSingleton.Instance.Role == "TechnicalInterviewer")
+                        {
+                            @Html.ActionLink(
+                                linkText: "Technical",
+                                actionName: "Create",
+                                controllerName: "TechnicalAssessments",
+                                routeValues: new
+                                {
+                                    candidateID = item.CandidateID,
+                                    testId=item.TestId
+                                },
+                                htmlAttributes: null
+                                )
+                        }
+                        else if (UserDetailsSingleton.Instance.Role == "HR")
+                        {
+                            @Html.ActionLink("HR", "Create", "HRAssessments", new { id = item.CandidateID }, htmlAttributes: null)
+                        }
+                    }
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').dataTable();
+    });
+</script>
